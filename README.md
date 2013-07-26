@@ -14,7 +14,6 @@ There are three parts to this
 
 SUMMER '13 TIMELINE
 --
-
 ** July 26, Friday: Not well again. Tried to work on the documentation
 
 * July 25, Thursday: Working on setting up latex on linux along with dOxygen for documentation. The latex bit failed. There were various problems even after painfully installing TeXlive to work with ST3, while compiling the classic thesis template.
