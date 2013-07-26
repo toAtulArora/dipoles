@@ -1,0 +1,897 @@
+   1               		.file	"capacitor_chargetank_Retry_2012_1.c"
+   2               	__SP_H__ = 0x3e
+   3               	__SP_L__ = 0x3d
+   4               	__SREG__ = 0x3f
+   5               	__tmp_reg__ = 0
+   6               	__zero_reg__ = 1
+   7               		.text
+   8               	.Ltext0:
+   9               		.cfi_sections	.debug_frame
+  10               		.section	.rodata.str1.1,"aMS",@progbits,1
+  11               	.LC0:
+  12 0000 5245 5345 		.string	"RESETTED"
+  12      5454 4544 
+  12      00
+  13               		.text
+  14               	.global	Init
+  16               	Init:
+  17               	.LFB7:
+  18               		.file 1 "capacitor_chargetank_Retry_2012_1.c"
+   1:capacitor_chargetank_Retry_2012_1.c **** 
+   2:capacitor_chargetank_Retry_2012_1.c **** /*
+   3:capacitor_chargetank_Retry_2012_1.c **** 	CAPACITIVE TANK BASED CAPACITANCE METER
+   4:capacitor_chargetank_Retry_2012_1.c **** */
+   5:capacitor_chargetank_Retry_2012_1.c **** 
+   6:capacitor_chargetank_Retry_2012_1.c **** // Version: 0.1
+   7:capacitor_chargetank_Retry_2012_1.c **** //#include <global.h>
+   8:capacitor_chargetank_Retry_2012_1.c **** 
+   9:capacitor_chargetank_Retry_2012_1.c **** #include <avr/io.h>			//included so we can use the text label for ports, pins etc.
+  10:capacitor_chargetank_Retry_2012_1.c **** #include <avr/interrupt.h>	//include interrupt support
+  11:capacitor_chargetank_Retry_2012_1.c **** #include <util/delay.h>
+  12:capacitor_chargetank_Retry_2012_1.c **** 
+  13:capacitor_chargetank_Retry_2012_1.c **** 
+  14:capacitor_chargetank_Retry_2012_1.c **** #include <stdio.h>
+  15:capacitor_chargetank_Retry_2012_1.c **** 
+  16:capacitor_chargetank_Retry_2012_1.c **** #include "lcd.h"
+  17:capacitor_chargetank_Retry_2012_1.c **** 
+  18:capacitor_chargetank_Retry_2012_1.c **** //GLOBAL VARIABLES
+  19:capacitor_chargetank_Retry_2012_1.c **** 
+  20:capacitor_chargetank_Retry_2012_1.c **** char test[10];
+  21:capacitor_chargetank_Retry_2012_1.c **** 
+  22:capacitor_chargetank_Retry_2012_1.c **** #define hi 4
+  23:capacitor_chargetank_Retry_2012_1.c **** #define lo 5
+  24:capacitor_chargetank_Retry_2012_1.c **** #define PULSE_PERIOD	5
+  25:capacitor_chargetank_Retry_2012_1.c **** #define DIRECTPUMP
+  26:capacitor_chargetank_Retry_2012_1.c **** #define FIXED_BURST	100
+  27:capacitor_chargetank_Retry_2012_1.c **** #define LED_ON PORTD|=(1<<4)
+  28:capacitor_chargetank_Retry_2012_1.c **** #define LED_OFF PORTD&=~(1<<4)
+  29:capacitor_chargetank_Retry_2012_1.c **** volatile int i,waiting;
+  30:capacitor_chargetank_Retry_2012_1.c **** volatile uint16_t measured;
+  31:capacitor_chargetank_Retry_2012_1.c **** unsigned short b;
+  32:capacitor_chargetank_Retry_2012_1.c **** volatile uint16_t high_word=0;
+  33:capacitor_chargetank_Retry_2012_1.c **** volatile uint16_t measured_high=0;
+  34:capacitor_chargetank_Retry_2012_1.c **** 
+  35:capacitor_chargetank_Retry_2012_1.c **** volatile uint16_t antihang=0;
+  36:capacitor_chargetank_Retry_2012_1.c **** 
+  37:capacitor_chargetank_Retry_2012_1.c **** volatile int drive_ctr;
+  38:capacitor_chargetank_Retry_2012_1.c **** volatile int wtemp;
+  39:capacitor_chargetank_Retry_2012_1.c **** static volatile int ac_captured;
+  40:capacitor_chargetank_Retry_2012_1.c **** 
+  41:capacitor_chargetank_Retry_2012_1.c **** volatile int drive_length=50;
+  42:capacitor_chargetank_Retry_2012_1.c **** 
+  43:capacitor_chargetank_Retry_2012_1.c **** int count=0;
+  44:capacitor_chargetank_Retry_2012_1.c **** void Init()
+  45:capacitor_chargetank_Retry_2012_1.c **** {
+  19               		.loc 1 45 0
+  20               		.cfi_startproc
+  21               	/* prologue: function */
+  22               	/* frame size = 0 */
+  23               	/* stack size = 0 */
+  24               	.L__stack_usage = 0
+  46:capacitor_chargetank_Retry_2012_1.c **** 	
+  47:capacitor_chargetank_Retry_2012_1.c **** 	lcd_init();
+  25               		.loc 1 47 0
+  26 0000 00D0      		rcall lcd_init
+  27               	.LVL0:
+  48:capacitor_chargetank_Retry_2012_1.c **** 	sprintf(test,"RESETTED");
+  28               		.loc 1 48 0
+  29 0002 60E0      		ldi r22,lo8(.LC0)
+  30 0004 70E0      		ldi r23,hi8(.LC0)
+  31 0006 80E0      		ldi r24,lo8(test)
+  32 0008 90E0      		ldi r25,hi8(test)
+  33 000a 00D0      		rcall strcpy
+  34               	.LVL1:
+  49:capacitor_chargetank_Retry_2012_1.c **** 	lcd_string(test,1);
+  35               		.loc 1 49 0
+  36 000c 61E0      		ldi r22,lo8(1)
+  37 000e 80E0      		ldi r24,lo8(test)
+  38 0010 90E0      		ldi r25,hi8(test)
+  39 0012 00D0      		rcall lcd_string
+  40               	.LVL2:
+  41               	.LBB9:
+  42               	.LBB10:
+  43               		.file 2 "/opt/avr/avr/include/util/delay.h"
+   1:/opt/avr/avr/include/util/delay.h **** /* Copyright (c) 2002, Marek Michalkiewicz
+   2:/opt/avr/avr/include/util/delay.h ****    Copyright (c) 2004,2005,2007 Joerg Wunsch
+   3:/opt/avr/avr/include/util/delay.h ****    Copyright (c) 2007  Florin-Viorel Petrov
+   4:/opt/avr/avr/include/util/delay.h ****    All rights reserved.
+   5:/opt/avr/avr/include/util/delay.h **** 
+   6:/opt/avr/avr/include/util/delay.h ****    Redistribution and use in source and binary forms, with or without
+   7:/opt/avr/avr/include/util/delay.h ****    modification, are permitted provided that the following conditions are met:
+   8:/opt/avr/avr/include/util/delay.h **** 
+   9:/opt/avr/avr/include/util/delay.h ****    * Redistributions of source code must retain the above copyright
+  10:/opt/avr/avr/include/util/delay.h ****      notice, this list of conditions and the following disclaimer.
+  11:/opt/avr/avr/include/util/delay.h **** 
+  12:/opt/avr/avr/include/util/delay.h ****    * Redistributions in binary form must reproduce the above copyright
+  13:/opt/avr/avr/include/util/delay.h ****      notice, this list of conditions and the following disclaimer in
+  14:/opt/avr/avr/include/util/delay.h ****      the documentation and/or other materials provided with the
+  15:/opt/avr/avr/include/util/delay.h ****      distribution.
+  16:/opt/avr/avr/include/util/delay.h **** 
+  17:/opt/avr/avr/include/util/delay.h ****    * Neither the name of the copyright holders nor the names of
+  18:/opt/avr/avr/include/util/delay.h ****      contributors may be used to endorse or promote products derived
+  19:/opt/avr/avr/include/util/delay.h ****      from this software without specific prior written permission.
+  20:/opt/avr/avr/include/util/delay.h **** 
+  21:/opt/avr/avr/include/util/delay.h ****   THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS "AS IS"
+  22:/opt/avr/avr/include/util/delay.h ****   AND ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT LIMITED TO, THE
+  23:/opt/avr/avr/include/util/delay.h ****   IMPLIED WARRANTIES OF MERCHANTABILITY AND FITNESS FOR A PARTICULAR PURPOSE
+  24:/opt/avr/avr/include/util/delay.h ****   ARE DISCLAIMED. IN NO EVENT SHALL THE COPYRIGHT OWNER OR CONTRIBUTORS BE
+  25:/opt/avr/avr/include/util/delay.h ****   LIABLE FOR ANY DIRECT, INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY, OR
+  26:/opt/avr/avr/include/util/delay.h ****   CONSEQUENTIAL DAMAGES (INCLUDING, BUT NOT LIMITED TO, PROCUREMENT OF
+  27:/opt/avr/avr/include/util/delay.h ****   SUBSTITUTE GOODS OR SERVICES; LOSS OF USE, DATA, OR PROFITS; OR BUSINESS
+  28:/opt/avr/avr/include/util/delay.h ****   INTERRUPTION) HOWEVER CAUSED AND ON ANY THEORY OF LIABILITY, WHETHER IN
+  29:/opt/avr/avr/include/util/delay.h ****   CONTRACT, STRICT LIABILITY, OR TORT (INCLUDING NEGLIGENCE OR OTHERWISE)
+  30:/opt/avr/avr/include/util/delay.h ****   ARISING IN ANY WAY OUT OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE
+  31:/opt/avr/avr/include/util/delay.h ****   POSSIBILITY OF SUCH DAMAGE. */
+  32:/opt/avr/avr/include/util/delay.h **** 
+  33:/opt/avr/avr/include/util/delay.h **** /* $Id: delay.h.in 2251 2011-09-14 08:20:33Z joerg_wunsch $ */
+  34:/opt/avr/avr/include/util/delay.h **** 
+  35:/opt/avr/avr/include/util/delay.h **** #ifndef _UTIL_DELAY_H_
+  36:/opt/avr/avr/include/util/delay.h **** #define _UTIL_DELAY_H_ 1
+  37:/opt/avr/avr/include/util/delay.h **** 
+  38:/opt/avr/avr/include/util/delay.h **** #ifndef __HAS_DELAY_CYCLES
+  39:/opt/avr/avr/include/util/delay.h **** #define __HAS_DELAY_CYCLES 1
+  40:/opt/avr/avr/include/util/delay.h **** #endif
+  41:/opt/avr/avr/include/util/delay.h **** 
+  42:/opt/avr/avr/include/util/delay.h **** #include <inttypes.h>
+  43:/opt/avr/avr/include/util/delay.h **** #include <util/delay_basic.h>
+  44:/opt/avr/avr/include/util/delay.h **** #include <math.h>
+  45:/opt/avr/avr/include/util/delay.h **** 
+  46:/opt/avr/avr/include/util/delay.h **** /** \file */
+  47:/opt/avr/avr/include/util/delay.h **** /** \defgroup util_delay <util/delay.h>: Convenience functions for busy-wait delay loops
+  48:/opt/avr/avr/include/util/delay.h ****     \code
+  49:/opt/avr/avr/include/util/delay.h ****     #define F_CPU 1000000UL  // 1 MHz
+  50:/opt/avr/avr/include/util/delay.h ****     //#define F_CPU 14.7456E6
+  51:/opt/avr/avr/include/util/delay.h ****     #include <util/delay.h>
+  52:/opt/avr/avr/include/util/delay.h ****     \endcode
+  53:/opt/avr/avr/include/util/delay.h **** 
+  54:/opt/avr/avr/include/util/delay.h ****     \note As an alternative method, it is possible to pass the
+  55:/opt/avr/avr/include/util/delay.h ****     F_CPU macro down to the compiler from the Makefile.
+  56:/opt/avr/avr/include/util/delay.h ****     Obviously, in that case, no \c \#define statement should be
+  57:/opt/avr/avr/include/util/delay.h ****     used.
+  58:/opt/avr/avr/include/util/delay.h **** 
+  59:/opt/avr/avr/include/util/delay.h ****     The functions in this header file are wrappers around the basic
+  60:/opt/avr/avr/include/util/delay.h ****     busy-wait functions from <util/delay_basic.h>.  They are meant as
+  61:/opt/avr/avr/include/util/delay.h ****     convenience functions where actual time values can be specified
+  62:/opt/avr/avr/include/util/delay.h ****     rather than a number of cycles to wait for.  The idea behind is
+  63:/opt/avr/avr/include/util/delay.h ****     that compile-time constant expressions will be eliminated by
+  64:/opt/avr/avr/include/util/delay.h ****     compiler optimization so floating-point expressions can be used
+  65:/opt/avr/avr/include/util/delay.h ****     to calculate the number of delay cycles needed based on the CPU
+  66:/opt/avr/avr/include/util/delay.h ****     frequency passed by the macro F_CPU.
+  67:/opt/avr/avr/include/util/delay.h **** 
+  68:/opt/avr/avr/include/util/delay.h ****     \note In order for these functions to work as intended, compiler
+  69:/opt/avr/avr/include/util/delay.h ****     optimizations <em>must</em> be enabled, and the delay time
+  70:/opt/avr/avr/include/util/delay.h ****     <em>must</em> be an expression that is a known constant at
+  71:/opt/avr/avr/include/util/delay.h ****     compile-time.  If these requirements are not met, the resulting
+  72:/opt/avr/avr/include/util/delay.h ****     delay will be much longer (and basically unpredictable), and
+  73:/opt/avr/avr/include/util/delay.h ****     applications that otherwise do not use floating-point calculations
+  74:/opt/avr/avr/include/util/delay.h ****     will experience severe code bloat by the floating-point library
+  75:/opt/avr/avr/include/util/delay.h ****     routines linked into the application.
+  76:/opt/avr/avr/include/util/delay.h **** 
+  77:/opt/avr/avr/include/util/delay.h ****     The functions available allow the specification of microsecond, and
+  78:/opt/avr/avr/include/util/delay.h ****     millisecond delays directly, using the application-supplied macro
+  79:/opt/avr/avr/include/util/delay.h ****     F_CPU as the CPU clock frequency (in Hertz).
+  80:/opt/avr/avr/include/util/delay.h **** 
+  81:/opt/avr/avr/include/util/delay.h **** */
+  82:/opt/avr/avr/include/util/delay.h **** 
+  83:/opt/avr/avr/include/util/delay.h **** #if !defined(__DOXYGEN__)
+  84:/opt/avr/avr/include/util/delay.h **** static inline void _delay_us(double __us) __attribute__((always_inline));
+  85:/opt/avr/avr/include/util/delay.h **** static inline void _delay_ms(double __ms) __attribute__((always_inline));
+  86:/opt/avr/avr/include/util/delay.h **** #endif
+  87:/opt/avr/avr/include/util/delay.h **** 
+  88:/opt/avr/avr/include/util/delay.h **** #ifndef F_CPU
+  89:/opt/avr/avr/include/util/delay.h **** /* prevent compiler error by supplying a default */
+  90:/opt/avr/avr/include/util/delay.h **** # warning "F_CPU not defined for <util/delay.h>"
+  91:/opt/avr/avr/include/util/delay.h **** # define F_CPU 1000000UL
+  92:/opt/avr/avr/include/util/delay.h **** #endif
+  93:/opt/avr/avr/include/util/delay.h **** 
+  94:/opt/avr/avr/include/util/delay.h **** #ifndef __OPTIMIZE__
+  95:/opt/avr/avr/include/util/delay.h **** # warning "Compiler optimizations disabled; functions from <util/delay.h> won't work as designed"
+  96:/opt/avr/avr/include/util/delay.h **** #endif
+  97:/opt/avr/avr/include/util/delay.h **** 
+  98:/opt/avr/avr/include/util/delay.h **** #if __HAS_DELAY_CYCLES && defined(__OPTIMIZE__) && \
+  99:/opt/avr/avr/include/util/delay.h ****   !defined(__DELAY_BACKWARD_COMPATIBLE__) &&	   \
+ 100:/opt/avr/avr/include/util/delay.h ****   __STDC_HOSTED__
+ 101:/opt/avr/avr/include/util/delay.h **** #  include <math.h>
+ 102:/opt/avr/avr/include/util/delay.h **** #endif
+ 103:/opt/avr/avr/include/util/delay.h **** 
+ 104:/opt/avr/avr/include/util/delay.h **** /**
+ 105:/opt/avr/avr/include/util/delay.h ****    \ingroup util_delay
+ 106:/opt/avr/avr/include/util/delay.h **** 
+ 107:/opt/avr/avr/include/util/delay.h ****    Perform a delay of \c __ms milliseconds, using _delay_loop_2().
+ 108:/opt/avr/avr/include/util/delay.h **** 
+ 109:/opt/avr/avr/include/util/delay.h ****    The macro F_CPU is supposed to be defined to a
+ 110:/opt/avr/avr/include/util/delay.h ****    constant defining the CPU clock frequency (in Hertz).
+ 111:/opt/avr/avr/include/util/delay.h **** 
+ 112:/opt/avr/avr/include/util/delay.h ****    The maximal possible delay is 262.14 ms / F_CPU in MHz.
+ 113:/opt/avr/avr/include/util/delay.h **** 
+ 114:/opt/avr/avr/include/util/delay.h ****    When the user request delay which exceed the maximum possible one,
+ 115:/opt/avr/avr/include/util/delay.h ****    _delay_ms() provides a decreased resolution functionality. In this
+ 116:/opt/avr/avr/include/util/delay.h ****    mode _delay_ms() will work with a resolution of 1/10 ms, providing
+ 117:/opt/avr/avr/include/util/delay.h ****    delays up to 6.5535 seconds (independent from CPU frequency).  The
+ 118:/opt/avr/avr/include/util/delay.h ****    user will not be informed about decreased resolution.
+ 119:/opt/avr/avr/include/util/delay.h **** 
+ 120:/opt/avr/avr/include/util/delay.h ****    If the avr-gcc toolchain has __builtin_avr_delay_cycles(unsigned long)
+ 121:/opt/avr/avr/include/util/delay.h ****    support, maximal possible delay is 4294967.295 ms/ F_CPU in MHz. For
+ 122:/opt/avr/avr/include/util/delay.h ****    values greater than the maximal possible delay, overflows results in
+ 123:/opt/avr/avr/include/util/delay.h ****    no delay i.e., 0ms.
+ 124:/opt/avr/avr/include/util/delay.h **** 
+ 125:/opt/avr/avr/include/util/delay.h ****    Conversion of __us into clock cycles may not always result in integer.
+ 126:/opt/avr/avr/include/util/delay.h ****    By default, the clock cycles rounded up to next integer. This ensures that
+ 127:/opt/avr/avr/include/util/delay.h ****    the user gets atleast __us microseconds of delay.
+ 128:/opt/avr/avr/include/util/delay.h **** 
+ 129:/opt/avr/avr/include/util/delay.h ****    Alternatively, user can define __DELAY_ROUND_DOWN__ and __DELAY_ROUND_CLOSEST__
+ 130:/opt/avr/avr/include/util/delay.h ****    to round down and round to closest integer.
+ 131:/opt/avr/avr/include/util/delay.h **** 
+ 132:/opt/avr/avr/include/util/delay.h ****    Note: The new implementation of _delay_ms(double __ms) with 
+ 133:/opt/avr/avr/include/util/delay.h ****     __builtin_avr_delay_cycles(unsigned long) support is not backward compatible. 
+ 134:/opt/avr/avr/include/util/delay.h ****    User can define __DELAY_BACKWARD_COMPATIBLE__ to get a backward compatible delay.
+ 135:/opt/avr/avr/include/util/delay.h ****    Also, the backward compatible
+ 136:/opt/avr/avr/include/util/delay.h ****    algorithm will be chosen if the code is compiled in a <em>freestanding
+ 137:/opt/avr/avr/include/util/delay.h ****    environment</em> (GCC option \c -ffreestanding), as the math functions
+ 138:/opt/avr/avr/include/util/delay.h ****    required for rounding are not available to the compiler then.
+ 139:/opt/avr/avr/include/util/delay.h **** 
+ 140:/opt/avr/avr/include/util/delay.h ****  */
+ 141:/opt/avr/avr/include/util/delay.h **** void
+ 142:/opt/avr/avr/include/util/delay.h **** _delay_ms(double __ms)
+ 143:/opt/avr/avr/include/util/delay.h **** {
+ 144:/opt/avr/avr/include/util/delay.h **** 	uint16_t __ticks;
+ 145:/opt/avr/avr/include/util/delay.h **** 	double __tmp ; 
+ 146:/opt/avr/avr/include/util/delay.h **** #if __HAS_DELAY_CYCLES && defined(__OPTIMIZE__) && \
+ 147:/opt/avr/avr/include/util/delay.h ****   !defined(__DELAY_BACKWARD_COMPATIBLE__) &&	   \
+ 148:/opt/avr/avr/include/util/delay.h ****   __STDC_HOSTED__
+ 149:/opt/avr/avr/include/util/delay.h **** 	uint32_t __ticks_dc;
+ 150:/opt/avr/avr/include/util/delay.h **** 	extern void __builtin_avr_delay_cycles(unsigned long);
+ 151:/opt/avr/avr/include/util/delay.h **** 	__tmp = ((F_CPU) / 1e3) * __ms;
+ 152:/opt/avr/avr/include/util/delay.h **** 
+ 153:/opt/avr/avr/include/util/delay.h **** 	#if defined(__DELAY_ROUND_DOWN__)
+ 154:/opt/avr/avr/include/util/delay.h **** 		__ticks_dc = (uint32_t)fabs(__tmp);
+ 155:/opt/avr/avr/include/util/delay.h **** 
+ 156:/opt/avr/avr/include/util/delay.h **** 	#elif defined(__DELAY_ROUND_CLOSEST__)
+ 157:/opt/avr/avr/include/util/delay.h **** 		__ticks_dc = (uint32_t)(fabs(__tmp)+0.5);
+ 158:/opt/avr/avr/include/util/delay.h **** 
+ 159:/opt/avr/avr/include/util/delay.h **** 	#else
+ 160:/opt/avr/avr/include/util/delay.h **** 		//round up by default
+ 161:/opt/avr/avr/include/util/delay.h **** 		__ticks_dc = (uint32_t)(ceil(fabs(__tmp)));
+ 162:/opt/avr/avr/include/util/delay.h **** 	#endif
+ 163:/opt/avr/avr/include/util/delay.h **** 
+ 164:/opt/avr/avr/include/util/delay.h **** 	__builtin_avr_delay_cycles(__ticks_dc);
+  44               		.loc 2 164 0
+  45 0014 2FEF      		ldi r18,lo8(3199999)
+  46 0016 83ED      		ldi r24,hi8(3199999)
+  47 0018 90E3      		ldi r25,hlo8(3199999)
+  48 001a 2150      		1: subi r18,1
+  49 001c 8040      		sbci r24,0
+  50 001e 9040      		sbci r25,0
+  51 0020 01F4      		brne 1b
+  52 0022 00C0      		rjmp .
+  53 0024 0000      		nop
+  54               	.LBE10:
+  55               	.LBE9:
+  50:capacitor_chargetank_Retry_2012_1.c **** 	_delay_ms(1000);
+  51:capacitor_chargetank_Retry_2012_1.c **** 	TCCR1A = 0;		//for normal mode, OCR1A immidiate update	//Timer/Counter Control Register
+  56               		.loc 1 51 0
+  57 0026 1FBC      		out 0x2f,__zero_reg__
+  52:capacitor_chargetank_Retry_2012_1.c **** 	ADCSRA &=~(1<<ADEN);//make sure ADC is OFF
+  58               		.loc 1 52 0
+  59 0028 3798      		cbi 0x6,7
+  53:capacitor_chargetank_Retry_2012_1.c **** 	
+  54:capacitor_chargetank_Retry_2012_1.c **** 	DDRD|=(1<<4);	//THE LED
+  60               		.loc 1 54 0
+  61 002a 8C9A      		sbi 0x11,4
+  55:capacitor_chargetank_Retry_2012_1.c **** sei();
+  62               		.loc 1 55 0
+  63               	/* #APP */
+  64               	 ;  55 "capacitor_chargetank_Retry_2012_1.c" 1
+  65 002c 7894      		sei
+  66               	 ;  0 "" 2
+  67               	/* #NOAPP */
+  68 002e 0895      		ret
+  69               		.cfi_endproc
+  70               	.LFE7:
+  72               		.section	.rodata.str1.1
+  73               	.LC1:
+  74 0009 4943 5231 		.string	"ICR1 : %u   "
+  74      203A 2025 
+  74      7520 2020 
+  74      00
+  75               	.LC2:
+  76 0016 5443 4E54 		.string	"TCNT1: %u   "
+  76      313A 2025 
+  76      7520 2020 
+  76      00
+  77               		.section	.text.startup,"ax",@progbits
+  78               	.global	main
+  80               	main:
+  81               	.LFB8:
+  56:capacitor_chargetank_Retry_2012_1.c **** }
+  57:capacitor_chargetank_Retry_2012_1.c **** 
+  58:capacitor_chargetank_Retry_2012_1.c **** int main(void) {
+  82               		.loc 1 58 0
+  83               		.cfi_startproc
+  84               	/* prologue: function */
+  85               	/* frame size = 0 */
+  86               	/* stack size = 0 */
+  87               	.L__stack_usage = 0
+  59:capacitor_chargetank_Retry_2012_1.c ****      Init();
+  88               		.loc 1 59 0
+  89 0000 00D0      		rcall Init
+  60:capacitor_chargetank_Retry_2012_1.c **** 	 while(1) {     // Infinite loop; interrupts do the rest
+  61:capacitor_chargetank_Retry_2012_1.c **** 	 count++;
+  62:capacitor_chargetank_Retry_2012_1.c **** ///////////////	
+  63:capacitor_chargetank_Retry_2012_1.c **** /*
+  64:capacitor_chargetank_Retry_2012_1.c **** 	//NOW SCANING
+  65:capacitor_chargetank_Retry_2012_1.c **** 	//Select Y
+  66:capacitor_chargetank_Retry_2012_1.c **** 		PORTC = 0;
+  67:capacitor_chargetank_Retry_2012_1.c **** 		DDRC = 0xFF;	
+  68:capacitor_chargetank_Retry_2012_1.c **** 		
+  69:capacitor_chargetank_Retry_2012_1.c **** 	//Pumping
+  70:capacitor_chargetank_Retry_2012_1.c **** 		PORTC = 0;
+  71:capacitor_chargetank_Retry_2012_1.c **** 		PORTD &= ~_BV(2); 	// no slope //basically we don't wanna measure decay of capacitor now
+  72:capacitor_chargetank_Retry_2012_1.c **** 		DDRD  &= ~_BV(2);  // PB1 = Z (tristate)
+  73:capacitor_chargetank_Retry_2012_1.c **** 		drive_ctr = drive_length;	//drive counter is set
+  74:capacitor_chargetank_Retry_2012_1.c **** 	//Direct Pumping
+  75:capacitor_chargetank_Retry_2012_1.c **** 		for (drive_ctr = drive_length; --drive_ctr >= 0; ) {
+  76:capacitor_chargetank_Retry_2012_1.c **** 			DDRC &= ~(1 << hi);		//PC0..top is tristate
+  77:capacitor_chargetank_Retry_2012_1.c **** 			PORTC |= (1 << lo); 	//PC1..bottom is ground
+  78:capacitor_chargetank_Retry_2012_1.c **** 				
+  79:capacitor_chargetank_Retry_2012_1.c **** 			PORTD |= (1 << 3);		//PD3..for drive on
+  80:capacitor_chargetank_Retry_2012_1.c **** 			//asm("nop");
+  81:capacitor_chargetank_Retry_2012_1.c **** 			//asm("nop");
+  82:capacitor_chargetank_Retry_2012_1.c **** 			//_delay_ms(1);
+  83:capacitor_chargetank_Retry_2012_1.c **** 			
+  84:capacitor_chargetank_Retry_2012_1.c **** 			DDRC &= ~(1 << lo);		//PC0..bottom is tristate
+  85:capacitor_chargetank_Retry_2012_1.c **** 			PORTC |= (1 << hi); 	//PC1..top is ground
+  86:capacitor_chargetank_Retry_2012_1.c **** 
+  87:capacitor_chargetank_Retry_2012_1.c **** 			PORTD &= ~(1 << 3);		//PD3..for drive off
+  88:capacitor_chargetank_Retry_2012_1.c **** 			//asm("nop");
+  89:capacitor_chargetank_Retry_2012_1.c **** 			//asm("nop");
+  90:capacitor_chargetank_Retry_2012_1.c **** 			//_delay_ms(1);
+  91:capacitor_chargetank_Retry_2012_1.c **** 		}
+  92:capacitor_chargetank_Retry_2012_1.c **** 
+  93:capacitor_chargetank_Retry_2012_1.c **** 	//POST CHARGE sequence
+  94:capacitor_chargetank_Retry_2012_1.c **** 	for(wtemp=32767; --wtemp && drive_ctr != 0;);		// wait until pumped if in timer pump mode
+  95:capacitor_chargetank_Retry_2012_1.c **** */
+  96:capacitor_chargetank_Retry_2012_1.c **** 
+  97:capacitor_chargetank_Retry_2012_1.c **** 		PORTC = 0;			//All earthed
+  98:capacitor_chargetank_Retry_2012_1.c **** 		DDRC = 0xFF;		//All outputs
+  90               		.loc 1 98 0
+  91 0002 9924      		clr r9
+  92 0004 9A94      		dec r9
+  99:capacitor_chargetank_Retry_2012_1.c **** 
+ 100:capacitor_chargetank_Retry_2012_1.c **** 		//SLope Tristate
+ 101:capacitor_chargetank_Retry_2012_1.c **** 		PORTD &= ~_BV(2); 	// no slope //basically we don't wanna measure decay of capacitor now
+ 102:capacitor_chargetank_Retry_2012_1.c **** 		DDRD  &= ~_BV(2);  // PB1 = Z (tristate)
+ 103:capacitor_chargetank_Retry_2012_1.c **** 		DDRD  |= _BV(3);	//Port D 3 is output enabled
+ 104:capacitor_chargetank_Retry_2012_1.c **** 		
+ 105:capacitor_chargetank_Retry_2012_1.c **** 		_delay_ms(40);		//give time to discharge
+ 106:capacitor_chargetank_Retry_2012_1.c **** ///////////////////////////////////////////
+ 107:capacitor_chargetank_Retry_2012_1.c **** //COMMON SO FAR
+ 108:capacitor_chargetank_Retry_2012_1.c **** 	for(int b=0;b<200;b++)
+ 109:capacitor_chargetank_Retry_2012_1.c **** 	{
+ 110:capacitor_chargetank_Retry_2012_1.c **** 		DDRC &= ~(1<<hi); 		// top is tris
+ 111:capacitor_chargetank_Retry_2012_1.c **** 		DDRC |= (1<<lo); 		// bottom is gnd
+ 112:capacitor_chargetank_Retry_2012_1.c **** 			
+ 113:capacitor_chargetank_Retry_2012_1.c **** 		PORTD |= (1<<3);		//Turn on Drive
+ 114:capacitor_chargetank_Retry_2012_1.c **** 		//_delay_us(1);
+ 115:capacitor_chargetank_Retry_2012_1.c **** 		
+ 116:capacitor_chargetank_Retry_2012_1.c **** 		DDRC &= ~(1<<lo);		// bottom is tris
+ 117:capacitor_chargetank_Retry_2012_1.c **** 		DDRC |= (1<<hi);		// top is gnd
+ 118:capacitor_chargetank_Retry_2012_1.c **** 		
+ 119:capacitor_chargetank_Retry_2012_1.c **** 		PORTD &= ~(1<<3);		//Turn off drive
+ 120:capacitor_chargetank_Retry_2012_1.c **** 		//_delay_us(1);
+ 121:capacitor_chargetank_Retry_2012_1.c **** 	}
+ 122:capacitor_chargetank_Retry_2012_1.c **** //////////////	
+ 123:capacitor_chargetank_Retry_2012_1.c **** 	
+ 124:capacitor_chargetank_Retry_2012_1.c **** 	waiting=1;
+  93               		.loc 1 124 0
+  94 0006 CC24      		clr r12
+  95 0008 C394      		inc r12
+  96 000a D12C      		mov r13,__zero_reg__
+ 125:capacitor_chargetank_Retry_2012_1.c **** 	DDRC &= ~(1<<5);
+ 126:capacitor_chargetank_Retry_2012_1.c **** 	PORTC &= ~(1<<5);
+ 127:capacitor_chargetank_Retry_2012_1.c **** 	
+ 128:capacitor_chargetank_Retry_2012_1.c **** 	
+ 129:capacitor_chargetank_Retry_2012_1.c **** 	SFIOR |=(1<<ACME);//enable multiplexer
+ 130:capacitor_chargetank_Retry_2012_1.c **** 	ADMUX |=(1<<MUX2)|(0<<MUX1)|(1<<MUX0); //select ADC3 as negative AIN
+ 131:capacitor_chargetank_Retry_2012_1.c **** 	ACSR |=
+ 132:capacitor_chargetank_Retry_2012_1.c **** 	(0<<ACD)|	//Enable Comparator
+ 133:capacitor_chargetank_Retry_2012_1.c **** 	(0<<ACBG)|	//Don't Connect 1.23V reference to AIN0
+ 134:capacitor_chargetank_Retry_2012_1.c **** 	(1<<ACIE)|	//Comparator Interrupt enable
+ 135:capacitor_chargetank_Retry_2012_1.c **** 	(0<<ACIC)|	//input capture disabled
+ 136:capacitor_chargetank_Retry_2012_1.c **** 	(1<<ACIS1)| //toggle set interrupt on falling edge
+ 137:capacitor_chargetank_Retry_2012_1.c **** 	(0<<ACIS0);
+ 138:capacitor_chargetank_Retry_2012_1.c **** 	
+ 139:capacitor_chargetank_Retry_2012_1.c **** 	TCNT1=0;
+ 140:capacitor_chargetank_Retry_2012_1.c **** 	high_word=0;
+ 141:capacitor_chargetank_Retry_2012_1.c **** 	TIMSK |= (1<<TOIE1);	//Timer Input Mask Register..for Timer 1 Overflow
+ 142:capacitor_chargetank_Retry_2012_1.c **** /////////////////
+ 143:capacitor_chargetank_Retry_2012_1.c **** 	
+ 144:capacitor_chargetank_Retry_2012_1.c **** 	PORTC &= ~(1 << hi); 	//PC4 or hi is earthed
+ 145:capacitor_chargetank_Retry_2012_1.c **** 	DDRD |= (1<<2);		//slope enable
+ 146:capacitor_chargetank_Retry_2012_1.c **** 	PORTD |= (1<<2);		//slope positive
+ 147:capacitor_chargetank_Retry_2012_1.c **** 	
+ 148:capacitor_chargetank_Retry_2012_1.c **** 	TCCR1B = (1<<ICNC1);	//for enabling input capture noise cancellation and falling edge is a zero bi
+  97               		.loc 1 148 0
+  98 000c 90E8      		ldi r25,lo8(-128)
+  99 000e 892E      		mov r8,r25
+ 149:capacitor_chargetank_Retry_2012_1.c **** 	TCCR1B |= (1<<CS10);	//for turning on the clock=enabling timer	
+ 150:capacitor_chargetank_Retry_2012_1.c **** 	
+ 151:capacitor_chargetank_Retry_2012_1.c **** 	antihang=65535;
+ 100               		.loc 1 151 0
+ 101 0010 AA24      		clr r10
+ 102 0012 AA94      		dec r10
+ 103 0014 BA2C      		mov r11,r10
+ 152:capacitor_chargetank_Retry_2012_1.c **** 	while(waiting && antihang--);
+ 153:capacitor_chargetank_Retry_2012_1.c **** 	
+ 154:capacitor_chargetank_Retry_2012_1.c **** 	//measured=measured>>1;
+ 155:capacitor_chargetank_Retry_2012_1.c **** 	ACSR&=~(0<<ACIE); //disable input capture
+ 156:capacitor_chargetank_Retry_2012_1.c **** 	//else disabling power might cause an unwanted interrupt
+ 157:capacitor_chargetank_Retry_2012_1.c **** 	SFIOR &= ~(1<<ACME);//disable multiplexer	
+ 158:capacitor_chargetank_Retry_2012_1.c **** 	/*
+ 159:capacitor_chargetank_Retry_2012_1.c **** 	ACSR |=
+ 160:capacitor_chargetank_Retry_2012_1.c **** 	(1<<ACD)|	//Disable Comparator
+ 161:capacitor_chargetank_Retry_2012_1.c **** 	(1<<ACBG)|	//Connect 1.23V reference to AIN0
+ 162:capacitor_chargetank_Retry_2012_1.c **** 	(0<<ACIE)|	//Comparator Interrupt enable
+ 163:capacitor_chargetank_Retry_2012_1.c **** 	(0<<ACIC)|	//input capture disabled
+ 164:capacitor_chargetank_Retry_2012_1.c **** 	(0<<ACIS1)| //set interrupt on output toggle
+ 165:capacitor_chargetank_Retry_2012_1.c **** 	(0<<ACIS0);
+ 166:capacitor_chargetank_Retry_2012_1.c **** 	*/
+ 167:capacitor_chargetank_Retry_2012_1.c **** 	
+ 168:capacitor_chargetank_Retry_2012_1.c **** 	DDRC = 0xFF;			// drain all
+ 169:capacitor_chargetank_Retry_2012_1.c **** 	PORTC = 0;
+ 170:capacitor_chargetank_Retry_2012_1.c **** 	PORTB &= ~_BV(2); 		// slope to gnd
+ 171:capacitor_chargetank_Retry_2012_1.c **** 	
+ 172:capacitor_chargetank_Retry_2012_1.c **** 	sprintf(test,"ICR1 : %u   ",ICR1);
+ 104               		.loc 1 172 0
+ 105 0016 30E0      		ldi r19,lo8(.LC1)
+ 106 0018 E32E      		mov r14,r19
+ 107 001a 30E0      		ldi r19,hi8(.LC1)
+ 108 001c F32E      		mov r15,r19
+ 109 001e C0E0      		ldi r28,lo8(test)
+ 110 0020 D0E0      		ldi r29,hi8(test)
+ 173:capacitor_chargetank_Retry_2012_1.c **** 	lcd_string(test,0);	
+ 174:capacitor_chargetank_Retry_2012_1.c **** 	sprintf(test,"TCNT1: %u   ",measured);
+ 111               		.loc 1 174 0
+ 112 0022 00E0      		ldi r16,lo8(.LC2)
+ 113 0024 10E0      		ldi r17,hi8(.LC2)
+ 114               	.L9:
+  61:capacitor_chargetank_Retry_2012_1.c **** 	 count++;
+ 115               		.loc 1 61 0
+ 116 0026 8091 0000 		lds r24,count
+ 117 002a 9091 0000 		lds r25,count+1
+ 118 002e 0196      		adiw r24,1
+ 119 0030 9093 0000 		sts count+1,r25
+ 120 0034 8093 0000 		sts count,r24
+  97:capacitor_chargetank_Retry_2012_1.c **** 		PORTC = 0;			//All earthed
+ 121               		.loc 1 97 0
+ 122 0038 15BA      		out 0x15,__zero_reg__
+  98:capacitor_chargetank_Retry_2012_1.c **** 		DDRC = 0xFF;		//All outputs
+ 123               		.loc 1 98 0
+ 124 003a 94BA      		out 0x14,r9
+ 101:capacitor_chargetank_Retry_2012_1.c **** 		PORTD &= ~_BV(2); 	// no slope //basically we don't wanna measure decay of capacitor now
+ 125               		.loc 1 101 0
+ 126 003c 9298      		cbi 0x12,2
+ 102:capacitor_chargetank_Retry_2012_1.c **** 		DDRD  &= ~_BV(2);  // PB1 = Z (tristate)
+ 127               		.loc 1 102 0
+ 128 003e 8A98      		cbi 0x11,2
+ 103:capacitor_chargetank_Retry_2012_1.c **** 		DDRD  |= _BV(3);	//Port D 3 is output enabled
+ 129               		.loc 1 103 0
+ 130 0040 8B9A      		sbi 0x11,3
+ 131               	.LBB11:
+ 132               	.LBB12:
+ 133               		.loc 2 164 0
+ 134 0042 2FEF      		ldi r18,lo8(127999)
+ 135 0044 83EF      		ldi r24,hi8(127999)
+ 136 0046 91E0      		ldi r25,hlo8(127999)
+ 137 0048 2150      		1: subi r18,1
+ 138 004a 8040      		sbci r24,0
+ 139 004c 9040      		sbci r25,0
+ 140 004e 01F4      		brne 1b
+ 141 0050 00C0      		rjmp .
+ 142 0052 0000      		nop
+ 143 0054 88EC      		ldi r24,lo8(-56)
+ 144 0056 90E0      		ldi r25,0
+ 145               	.L4:
+ 146               	.LBE12:
+ 147               	.LBE11:
+ 148               	.LBB13:
+ 110:capacitor_chargetank_Retry_2012_1.c **** 		DDRC &= ~(1<<hi); 		// top is tris
+ 149               		.loc 1 110 0 discriminator 2
+ 150 0058 A498      		cbi 0x14,4
+ 111:capacitor_chargetank_Retry_2012_1.c **** 		DDRC |= (1<<lo); 		// bottom is gnd
+ 151               		.loc 1 111 0 discriminator 2
+ 152 005a A59A      		sbi 0x14,5
+ 113:capacitor_chargetank_Retry_2012_1.c **** 		PORTD |= (1<<3);		//Turn on Drive
+ 153               		.loc 1 113 0 discriminator 2
+ 154 005c 939A      		sbi 0x12,3
+ 116:capacitor_chargetank_Retry_2012_1.c **** 		DDRC &= ~(1<<lo);		// bottom is tris
+ 155               		.loc 1 116 0 discriminator 2
+ 156 005e A598      		cbi 0x14,5
+ 117:capacitor_chargetank_Retry_2012_1.c **** 		DDRC |= (1<<hi);		// top is gnd
+ 157               		.loc 1 117 0 discriminator 2
+ 158 0060 A49A      		sbi 0x14,4
+ 119:capacitor_chargetank_Retry_2012_1.c **** 		PORTD &= ~(1<<3);		//Turn off drive
+ 159               		.loc 1 119 0 discriminator 2
+ 160 0062 9398      		cbi 0x12,3
+ 161 0064 0197      		sbiw r24,1
+ 108:capacitor_chargetank_Retry_2012_1.c **** 	for(int b=0;b<200;b++)
+ 162               		.loc 1 108 0 discriminator 2
+ 163 0066 0097      		sbiw r24,0
+ 164 0068 01F4      		brne .L4
+ 165               	.LBE13:
+ 124:capacitor_chargetank_Retry_2012_1.c **** 	waiting=1;
+ 166               		.loc 1 124 0
+ 167 006a D092 0000 		sts waiting+1,r13
+ 168 006e C092 0000 		sts waiting,r12
+ 125:capacitor_chargetank_Retry_2012_1.c **** 	DDRC &= ~(1<<5);
+ 169               		.loc 1 125 0
+ 170 0072 A598      		cbi 0x14,5
+ 126:capacitor_chargetank_Retry_2012_1.c **** 	PORTC &= ~(1<<5);
+ 171               		.loc 1 126 0
+ 172 0074 AD98      		cbi 0x15,5
+ 129:capacitor_chargetank_Retry_2012_1.c **** 	SFIOR |=(1<<ACME);//enable multiplexer
+ 173               		.loc 1 129 0
+ 174 0076 80B7      		in r24,0x30
+ 175 0078 8860      		ori r24,lo8(8)
+ 176 007a 80BF      		out 0x30,r24
+ 130:capacitor_chargetank_Retry_2012_1.c **** 	ADMUX |=(1<<MUX2)|(0<<MUX1)|(1<<MUX0); //select ADC3 as negative AIN
+ 177               		.loc 1 130 0
+ 178 007c 87B1      		in r24,0x7
+ 179 007e 8560      		ori r24,lo8(5)
+ 180 0080 87B9      		out 0x7,r24
+ 131:capacitor_chargetank_Retry_2012_1.c **** 	ACSR |=
+ 181               		.loc 1 131 0
+ 182 0082 88B1      		in r24,0x8
+ 183 0084 8A60      		ori r24,lo8(10)
+ 184 0086 88B9      		out 0x8,r24
+ 139:capacitor_chargetank_Retry_2012_1.c **** 	TCNT1=0;
+ 185               		.loc 1 139 0
+ 186 0088 1DBC      		out 0x2c+1,__zero_reg__
+ 187 008a 1CBC      		out 0x2c,__zero_reg__
+ 140:capacitor_chargetank_Retry_2012_1.c **** 	high_word=0;
+ 188               		.loc 1 140 0
+ 189 008c 1092 0000 		sts high_word+1,__zero_reg__
+ 190 0090 1092 0000 		sts high_word,__zero_reg__
+ 141:capacitor_chargetank_Retry_2012_1.c **** 	TIMSK |= (1<<TOIE1);	//Timer Input Mask Register..for Timer 1 Overflow
+ 191               		.loc 1 141 0
+ 192 0094 89B7      		in r24,0x39
+ 193 0096 8460      		ori r24,lo8(4)
+ 194 0098 89BF      		out 0x39,r24
+ 144:capacitor_chargetank_Retry_2012_1.c **** 	PORTC &= ~(1 << hi); 	//PC4 or hi is earthed
+ 195               		.loc 1 144 0
+ 196 009a AC98      		cbi 0x15,4
+ 145:capacitor_chargetank_Retry_2012_1.c **** 	DDRD |= (1<<2);		//slope enable
+ 197               		.loc 1 145 0
+ 198 009c 8A9A      		sbi 0x11,2
+ 146:capacitor_chargetank_Retry_2012_1.c **** 	PORTD |= (1<<2);		//slope positive
+ 199               		.loc 1 146 0
+ 200 009e 929A      		sbi 0x12,2
+ 148:capacitor_chargetank_Retry_2012_1.c **** 	TCCR1B = (1<<ICNC1);	//for enabling input capture noise cancellation and falling edge is a zero bi
+ 201               		.loc 1 148 0
+ 202 00a0 8EBC      		out 0x2e,r8
+ 149:capacitor_chargetank_Retry_2012_1.c **** 	TCCR1B |= (1<<CS10);	//for turning on the clock=enabling timer	
+ 203               		.loc 1 149 0
+ 204 00a2 8EB5      		in r24,0x2e
+ 205 00a4 8160      		ori r24,lo8(1)
+ 206 00a6 8EBD      		out 0x2e,r24
+ 151:capacitor_chargetank_Retry_2012_1.c **** 	antihang=65535;
+ 207               		.loc 1 151 0
+ 208 00a8 B092 0000 		sts antihang+1,r11
+ 209 00ac A092 0000 		sts antihang,r10
+ 210               	.L8:
+ 152:capacitor_chargetank_Retry_2012_1.c **** 	while(waiting && antihang--);
+ 211               		.loc 1 152 0 discriminator 1
+ 212 00b0 8091 0000 		lds r24,waiting
+ 213 00b4 9091 0000 		lds r25,waiting+1
+ 214 00b8 892B      		or r24,r25
+ 215 00ba 01F0      		breq .L6
+ 152:capacitor_chargetank_Retry_2012_1.c **** 	while(waiting && antihang--);
+ 216               		.loc 1 152 0 is_stmt 0 discriminator 2
+ 217 00bc 8091 0000 		lds r24,antihang
+ 218 00c0 9091 0000 		lds r25,antihang+1
+ 219 00c4 9C01      		movw r18,r24
+ 220 00c6 2150      		subi r18,1
+ 221 00c8 3109      		sbc r19,__zero_reg__
+ 222 00ca 3093 0000 		sts antihang+1,r19
+ 223 00ce 2093 0000 		sts antihang,r18
+ 224 00d2 892B      		or r24,r25
+ 225 00d4 01F4      		brne .L8
+ 226               	.L6:
+ 155:capacitor_chargetank_Retry_2012_1.c **** 	ACSR&=~(0<<ACIE); //disable input capture
+ 227               		.loc 1 155 0 is_stmt 1
+ 228 00d6 88B1      		in r24,0x8
+ 229 00d8 88B9      		out 0x8,r24
+ 157:capacitor_chargetank_Retry_2012_1.c **** 	SFIOR &= ~(1<<ACME);//disable multiplexer	
+ 230               		.loc 1 157 0
+ 231 00da 80B7      		in r24,0x30
+ 232 00dc 877F      		andi r24,lo8(-9)
+ 233 00de 80BF      		out 0x30,r24
+ 168:capacitor_chargetank_Retry_2012_1.c **** 	DDRC = 0xFF;			// drain all
+ 234               		.loc 1 168 0
+ 235 00e0 94BA      		out 0x14,r9
+ 169:capacitor_chargetank_Retry_2012_1.c **** 	PORTC = 0;
+ 236               		.loc 1 169 0
+ 237 00e2 15BA      		out 0x15,__zero_reg__
+ 170:capacitor_chargetank_Retry_2012_1.c **** 	PORTB &= ~_BV(2); 		// slope to gnd
+ 238               		.loc 1 170 0
+ 239 00e4 C298      		cbi 0x18,2
+ 172:capacitor_chargetank_Retry_2012_1.c **** 	sprintf(test,"ICR1 : %u   ",ICR1);
+ 240               		.loc 1 172 0
+ 241 00e6 86B5      		in r24,0x26
+ 242 00e8 97B5      		in r25,0x26+1
+ 243 00ea 9F93      		push r25
+ 244               	.LCFI0:
+ 245               		.cfi_def_cfa_offset 3
+ 246 00ec 8F93      		push r24
+ 247               	.LCFI1:
+ 248               		.cfi_def_cfa_offset 4
+ 249 00ee FF92      		push r15
+ 250               	.LCFI2:
+ 251               		.cfi_def_cfa_offset 5
+ 252 00f0 EF92      		push r14
+ 253               	.LCFI3:
+ 254               		.cfi_def_cfa_offset 6
+ 255 00f2 DF93      		push r29
+ 256               	.LCFI4:
+ 257               		.cfi_def_cfa_offset 7
+ 258 00f4 CF93      		push r28
+ 259               	.LCFI5:
+ 260               		.cfi_def_cfa_offset 8
+ 261 00f6 00D0      		rcall sprintf
+ 173:capacitor_chargetank_Retry_2012_1.c **** 	lcd_string(test,0);	
+ 262               		.loc 1 173 0
+ 263 00f8 60E0      		ldi r22,0
+ 264 00fa 80E0      		ldi r24,lo8(test)
+ 265 00fc 90E0      		ldi r25,hi8(test)
+ 266 00fe 00D0      		rcall lcd_string
+ 267               		.loc 1 174 0
+ 268 0100 8091 0000 		lds r24,measured
+ 269 0104 9091 0000 		lds r25,measured+1
+ 270 0108 9F93      		push r25
+ 271               	.LCFI6:
+ 272               		.cfi_def_cfa_offset 9
+ 273 010a 8F93      		push r24
+ 274               	.LCFI7:
+ 275               		.cfi_def_cfa_offset 10
+ 276 010c 1F93      		push r17
+ 277               	.LCFI8:
+ 278               		.cfi_def_cfa_offset 11
+ 279 010e 0F93      		push r16
+ 280               	.LCFI9:
+ 281               		.cfi_def_cfa_offset 12
+ 282 0110 DF93      		push r29
+ 283               	.LCFI10:
+ 284               		.cfi_def_cfa_offset 13
+ 285 0112 CF93      		push r28
+ 286               	.LCFI11:
+ 287               		.cfi_def_cfa_offset 14
+ 288 0114 00D0      		rcall sprintf
+ 175:capacitor_chargetank_Retry_2012_1.c **** 	lcd_string(test,16);	
+ 289               		.loc 1 175 0
+ 290 0116 60E1      		ldi r22,lo8(16)
+ 291 0118 80E0      		ldi r24,lo8(test)
+ 292 011a 90E0      		ldi r25,hi8(test)
+ 293 011c 00D0      		rcall lcd_string
+ 294               	.LBB14:
+ 295               	.LBB15:
+ 296               		.loc 2 164 0
+ 297 011e 8FE1      		ldi r24,lo8(19999)
+ 298 0120 9EE4      		ldi r25,hi8(19999)
+ 299 0122 0197      		1: sbiw r24,1
+ 300 0124 01F4      		brne 1b
+ 301 0126 00C0      		rjmp .
+ 302 0128 0000      		nop
+ 303               	.LBE15:
+ 304               	.LBE14:
+ 176:capacitor_chargetank_Retry_2012_1.c **** 	
+ 177:capacitor_chargetank_Retry_2012_1.c **** 	_delay_ms(5);
+ 178:capacitor_chargetank_Retry_2012_1.c **** 	PORTD |= (1<<4);
+ 305               		.loc 1 178 0
+ 306 012a 949A      		sbi 0x12,4
+ 179:capacitor_chargetank_Retry_2012_1.c **** 	
+ 180:capacitor_chargetank_Retry_2012_1.c ****    }
+ 307               		.loc 1 180 0
+ 308 012c 8DB7      		in r24,__SP_L__
+ 309 012e 9EB7      		in r25,__SP_H__
+ 310 0130 0C96      		adiw r24,12
+ 311 0132 0FB6      		in __tmp_reg__,__SREG__
+ 312 0134 F894      		cli
+ 313 0136 9EBF      		out __SP_H__,r25
+ 314 0138 0FBE      		out __SREG__,__tmp_reg__
+ 315 013a 8DBF      		out __SP_L__,r24
+ 316               	.LCFI12:
+ 317               		.cfi_def_cfa_offset 2
+ 318 013c 00C0      		rjmp .L9
+ 319               		.cfi_endproc
+ 320               	.LFE8:
+ 322               		.text
+ 323               	.global	__vector_16
+ 325               	__vector_16:
+ 326               	.LFB9:
+ 181:capacitor_chargetank_Retry_2012_1.c **** 	
+ 182:capacitor_chargetank_Retry_2012_1.c **** }
+ 183:capacitor_chargetank_Retry_2012_1.c **** 
+ 184:capacitor_chargetank_Retry_2012_1.c **** 
+ 185:capacitor_chargetank_Retry_2012_1.c **** ISR(ANA_COMP_vect) {
+ 327               		.loc 1 185 0
+ 328               		.cfi_startproc
+ 329 0030 1F92      		push r1
+ 330               	.LCFI13:
+ 331               		.cfi_def_cfa_offset 3
+ 332               		.cfi_offset 1, -2
+ 333 0032 0F92      		push r0
+ 334               	.LCFI14:
+ 335               		.cfi_def_cfa_offset 4
+ 336               		.cfi_offset 0, -3
+ 337 0034 0FB6      		in r0,__SREG__
+ 338 0036 0F92      		push r0
+ 339 0038 1124      		clr __zero_reg__
+ 340 003a 8F93      		push r24
+ 341               	.LCFI15:
+ 342               		.cfi_def_cfa_offset 5
+ 343               		.cfi_offset 24, -4
+ 344 003c 9F93      		push r25
+ 345               	.LCFI16:
+ 346               		.cfi_def_cfa_offset 6
+ 347               		.cfi_offset 25, -5
+ 348               	/* prologue: Signal */
+ 349               	/* frame size = 0 */
+ 350               	/* stack size = 5 */
+ 351               	.L__stack_usage = 5
+ 186:capacitor_chargetank_Retry_2012_1.c **** //	if bit_is_clear(ACSR,ACO)
+ 187:capacitor_chargetank_Retry_2012_1.c **** //	{
+ 188:capacitor_chargetank_Retry_2012_1.c **** 	waiting=0;
+ 352               		.loc 1 188 0
+ 353 003e 1092 0000 		sts waiting+1,__zero_reg__
+ 354 0042 1092 0000 		sts waiting,__zero_reg__
+ 189:capacitor_chargetank_Retry_2012_1.c **** 	measured=TCNT1;
+ 355               		.loc 1 189 0
+ 356 0046 8CB5      		in r24,0x2c
+ 357 0048 9DB5      		in r25,0x2c+1
+ 358 004a 9093 0000 		sts measured+1,r25
+ 359 004e 8093 0000 		sts measured,r24
+ 190:capacitor_chargetank_Retry_2012_1.c **** 	//if (high_word==0)
+ 191:capacitor_chargetank_Retry_2012_1.c **** //		measured=ICR1;
+ 192:capacitor_chargetank_Retry_2012_1.c **** 	//measured=TCNT1;
+ 193:capacitor_chargetank_Retry_2012_1.c **** 	measured_high=high_word;
+ 360               		.loc 1 193 0
+ 361 0052 8091 0000 		lds r24,high_word
+ 362 0056 9091 0000 		lds r25,high_word+1
+ 363 005a 9093 0000 		sts measured_high+1,r25
+ 364 005e 8093 0000 		sts measured_high,r24
+ 194:capacitor_chargetank_Retry_2012_1.c **** 	TCCR1B = 0;
+ 365               		.loc 1 194 0
+ 366 0062 1EBC      		out 0x2e,__zero_reg__
+ 195:capacitor_chargetank_Retry_2012_1.c **** //	}
+ 196:capacitor_chargetank_Retry_2012_1.c **** 
+ 197:capacitor_chargetank_Retry_2012_1.c **** //	if bit_is_clear(ACSR, ACO)
+ 198:capacitor_chargetank_Retry_2012_1.c **** 		PORTD &= ~(1<<4);
+ 367               		.loc 1 198 0
+ 368 0064 9498      		cbi 0x12,4
+ 369               	/* epilogue start */
+ 199:capacitor_chargetank_Retry_2012_1.c **** //	else
+ 200:capacitor_chargetank_Retry_2012_1.c **** //		PORTD |= (1<<4);
+ 201:capacitor_chargetank_Retry_2012_1.c **** }
+ 370               		.loc 1 201 0
+ 371 0066 9F91      		pop r25
+ 372 0068 8F91      		pop r24
+ 373 006a 0F90      		pop r0
+ 374 006c 0FBE      		out __SREG__,r0
+ 375 006e 0F90      		pop r0
+ 376 0070 1F90      		pop r1
+ 377 0072 1895      		reti
+ 378               		.cfi_endproc
+ 379               	.LFE9:
+ 381               	.global	__vector_8
+ 383               	__vector_8:
+ 384               	.LFB10:
+ 202:capacitor_chargetank_Retry_2012_1.c **** 
+ 203:capacitor_chargetank_Retry_2012_1.c **** ISR(TIMER1_OVF_vect){
+ 385               		.loc 1 203 0
+ 386               		.cfi_startproc
+ 387 0074 1F92      		push r1
+ 388               	.LCFI17:
+ 389               		.cfi_def_cfa_offset 3
+ 390               		.cfi_offset 1, -2
+ 391 0076 0F92      		push r0
+ 392               	.LCFI18:
+ 393               		.cfi_def_cfa_offset 4
+ 394               		.cfi_offset 0, -3
+ 395 0078 0FB6      		in r0,__SREG__
+ 396 007a 0F92      		push r0
+ 397 007c 1124      		clr __zero_reg__
+ 398 007e 8F93      		push r24
+ 399               	.LCFI19:
+ 400               		.cfi_def_cfa_offset 5
+ 401               		.cfi_offset 24, -4
+ 402 0080 9F93      		push r25
+ 403               	.LCFI20:
+ 404               		.cfi_def_cfa_offset 6
+ 405               		.cfi_offset 25, -5
+ 406               	/* prologue: Signal */
+ 407               	/* frame size = 0 */
+ 408               	/* stack size = 5 */
+ 409               	.L__stack_usage = 5
+ 204:capacitor_chargetank_Retry_2012_1.c **** 	high_word++;
+ 410               		.loc 1 204 0
+ 411 0082 8091 0000 		lds r24,high_word
+ 412 0086 9091 0000 		lds r25,high_word+1
+ 413 008a 0196      		adiw r24,1
+ 414 008c 9093 0000 		sts high_word+1,r25
+ 415 0090 8093 0000 		sts high_word,r24
+ 416               	/* epilogue start */
+ 205:capacitor_chargetank_Retry_2012_1.c **** }
+ 417               		.loc 1 205 0
+ 418 0094 9F91      		pop r25
+ 419 0096 8F91      		pop r24
+ 420 0098 0F90      		pop r0
+ 421 009a 0FBE      		out __SREG__,r0
+ 422 009c 0F90      		pop r0
+ 423 009e 1F90      		pop r1
+ 424 00a0 1895      		reti
+ 425               		.cfi_endproc
+ 426               	.LFE10:
+ 428               	.global	count
+ 429               		.section .bss
+ 432               	count:
+ 433 0000 0000      		.zero	2
+ 434               	.global	drive_length
+ 435               		.data
+ 438               	drive_length:
+ 439 0000 3200      		.word	50
+ 440               		.local	ac_captured
+ 441               		.comm	ac_captured,2,1
+ 442               		.comm	wtemp,2,1
+ 443               		.comm	drive_ctr,2,1
+ 444               	.global	antihang
+ 445               		.section .bss
+ 448               	antihang:
+ 449 0002 0000      		.zero	2
+ 450               	.global	measured_high
+ 453               	measured_high:
+ 454 0004 0000      		.zero	2
+ 455               	.global	high_word
+ 458               	high_word:
+ 459 0006 0000      		.zero	2
+ 460               		.comm	b,2,1
+ 461               		.comm	measured,2,1
+ 462               		.comm	waiting,2,1
+ 463               		.comm	i,2,1
+ 464               		.comm	test,10,1
+ 465               		.text
+ 466               	.Letext0:
+ 467               		.file 3 "/opt/avr/avr/include/stdint.h"
+ 468               		.file 4 "lcd.h"
+ 469               		.file 5 "<built-in>"
+DEFINED SYMBOLS
+                            *ABS*:00000000 capacitor_chargetank_Retry_2012_1.c
+     /tmp/ccue7JFb.s:2      *ABS*:0000003e __SP_H__
+     /tmp/ccue7JFb.s:3      *ABS*:0000003d __SP_L__
+     /tmp/ccue7JFb.s:4      *ABS*:0000003f __SREG__
+     /tmp/ccue7JFb.s:5      *ABS*:00000000 __tmp_reg__
+     /tmp/ccue7JFb.s:6      *ABS*:00000001 __zero_reg__
+     /tmp/ccue7JFb.s:16     .text:00000000 Init
+                            *COM*:0000000a test
+     /tmp/ccue7JFb.s:80     .text.startup:00000000 main
+     /tmp/ccue7JFb.s:432    .bss:00000000 count
+                            *COM*:00000002 waiting
+     /tmp/ccue7JFb.s:458    .bss:00000006 high_word
+     /tmp/ccue7JFb.s:448    .bss:00000002 antihang
+                            *COM*:00000002 measured
+     /tmp/ccue7JFb.s:325    .text:00000030 __vector_16
+     /tmp/ccue7JFb.s:453    .bss:00000004 measured_high
+     /tmp/ccue7JFb.s:383    .text:00000074 __vector_8
+     /tmp/ccue7JFb.s:438    .data:00000000 drive_length
+                             .bss:00000008 ac_captured
+                            *COM*:00000002 wtemp
+                            *COM*:00000002 drive_ctr
+                            *COM*:00000002 b
+                            *COM*:00000002 i
+
+UNDEFINED SYMBOLS
+lcd_init
+strcpy
+lcd_string
+sprintf
+__do_copy_data
+__do_clear_bss

@@ -1,0 +1,33 @@
+CC=g++
+CFLAGS= -std=c++11 -pthread -ggdb -c -Wall
+# -c means don't run the linker, object files should come out
+
+USBFLAGS=   `libusb-config --cflags`
+CVFLAGS=	`pkg-config --cflags opencv`
+FLAGS=$USBFLAGS $CVFLAGS
+
+INCLUDE=include/
+
+USBLIBS=    `libusb-config --libs`
+CVLIBS=		`pkg-config --libs opencv`
+LIBS=		$(USBLIBS) $(CVLIBS)
+
+CFLAGS= $CFLAGS $FLAGS
+LDFLAGS=$LIBS
+
+SOURCES=latticeAnalyser.cpp include/hiddata.c include/usbIO.c
+OBJECTS=$(SOURCES:%.cpp=%.o) $(SOURCES:%.c=%.o)
+EXECUTABLE=latticeAnalyser
+
+%.cpp%.o:
+	$(CC) $(CFLAGS) -I$(INCLUDE) $< -o $@
+
+%.c%.o:
+	$(CC) $(CFLAGS) -I$(INCLUDE) $< -o $@
+
+$(EXECUTABLE): $(OBJECTS) 
+	$(CC) $(LDFLAGS) $(OBJECTS) -o $@
+
+all: $(SOURCES) $(EXECUTABLE)
+	
+

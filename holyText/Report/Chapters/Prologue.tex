@@ -1,0 +1,26 @@
+%************************************************
+\chapter{Prologue}
+%************************************************
+	% Despite numerous attempts we have failed at \emph{seeing} the microscopic world; a consequence often dressed as the `uncertainty principle'. It has been attempted here, to reconstruct a rather simple microscopic structure; to \emph{see} what happens for ourselves.
+	Atoms and molecules are far too small to be observable as individual entities, with our eyes alone. Scientists have come a long way at understanding \emph{their} world. It has been attempted to recreate a specific micro-structure, at a scale where we can directly observe it.
+	\par
+	The configuration we've studied here, is that of a Magnetic Dipole Lattice, viz. Magnetic Dipoles that can only rotate about their axis, placed on a grid. Their physics by itself is rather interesting and can be simulated to observe the dynamics. The experiment is expected to show the same dynamics, that of the microscopic world, only directly observable.
+
+\section{Prior Art}
+	TODO: Complete this part after understanding the physics and simulations on the system.
+
+\section{Experimental Setup}
+	The upscale version consists of Physical Magnetic Dipoles, that rest on near zero friction spots on a grid. A camera sits on top, with all the dipoles in its field of view. The Lattice Analyser takes the input from the camera and simulates the given temperature through a hardware unit and the coils attached to each dipole. It is that simple.
+	\par
+	For implementation details, you may read the following sections.
+	\subsection{The Dipole}
+		According to the current design (as of May 19, 2013), the Magnetic Dipole is built off of two small cylindrical rare earth magnets, attached to a needle,  with their flat face's surface normal perpendicular to the axis of the needle. The needle rests in an assembly with a glass slide at the bottom. This keeps it upright and nearly free of friction. Each dipole further has a circular disc on top, with its centre passing through that of the dipole. The disc has a pattern printed, designed to find its angular position using a camera. Further, the dipole assembly also has two coils along an axis perpendicular to the needle.
+	\subsection{Lattice Analyser}
+		This is the application that
+		\begin{enumerate}
+			\item records the dynamics of the system
+			\item calculates the required field strength of each electromagnet
+		\end{enumerate}
+		using a webcam and computer vision techniques. The results of the latter part depend on the temperature that is to be simulated; temperature is not maintained by providing heat, but instead by providing a certain distribution of speeds to the dipoles.
+	\subsection{Temperature}
+		This is the hardware unit, (will be built around an ATmega 16) that provides the coils with the current as calculated by the Lattice Analyser (using a USB interface).

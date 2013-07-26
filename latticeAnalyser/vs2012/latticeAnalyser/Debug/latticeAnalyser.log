@@ -1,0 +1,26 @@
+﻿Build started 21/05/2013 09:01:05 PM.
+     1>Project "C:\Users\Atul\Documents\IISER_repo\Summers_2013\NPL\latticeAnalyser\vs2012\latticeAnalyser\latticeAnalyser.vcxproj" on node 2 (Build target(s)).
+     1>ClCompile:
+         C:\Program Files (x86)\Microsoft Visual Studio 11.0\VC\bin\CL.exe /c /IC:\opencv\build\include /ZI /nologo /W3 /WX- /Od /Oy- /D WIN32 /D _DEBUG /D _CONSOLE /D _UNICODE /D UNICODE /Gm /EHsc /RTC1 /MDd /GS /fp:precise /Zc:wchar_t /Zc:forScope /Fo"Debug\\" /Fd"Debug\vc110.pdb" /Gd /TP /analyze- /errorReport:prompt ..\..\latticeAnalyser.cpp
+         latticeAnalyser.cpp
+     1>c:\users\atul\documents\iiser_repo\summers_2013\npl\latticeanalyser\latticeanalyser.cpp(54): warning C4305: 'initializing' : truncation from 'double' to 'float'
+     1>c:\users\atul\documents\iiser_repo\summers_2013\npl\latticeanalyser\latticeanalyser.cpp(200): warning C4244: '=' : conversion from 'int64' to 'double', possible loss of data
+     1>c:\users\atul\documents\iiser_repo\summers_2013\npl\latticeanalyser\latticeanalyser.cpp(204): warning C4244: '=' : conversion from 'int64' to 'long', possible loss of data
+     1>c:\users\atul\documents\iiser_repo\summers_2013\npl\latticeanalyser\latticeanalyser.cpp(341): warning C4018: '<' : signed/unsigned mismatch
+     1>c:\users\atul\documents\iiser_repo\summers_2013\npl\latticeanalyser\latticeanalyser.cpp(345): warning C4018: '<' : signed/unsigned mismatch
+     1>c:\users\atul\documents\iiser_repo\summers_2013\npl\latticeanalyser\latticeanalyser.cpp(353): warning C4244: 'argument' : conversion from 'float' to 'int', possible loss of data
+     1>c:\users\atul\documents\iiser_repo\summers_2013\npl\latticeanalyser\latticeanalyser.cpp(354): warning C4244: 'initializing' : conversion from 'int' to 'float', possible loss of data
+     1>c:\users\atul\documents\iiser_repo\summers_2013\npl\latticeanalyser\latticeanalyser.cpp(360): warning C4244: 'initializing' : conversion from 'double' to 'float', possible loss of data
+     1>c:\users\atul\documents\iiser_repo\summers_2013\npl\latticeanalyser\latticeanalyser.cpp(383): warning C4244: '=' : conversion from 'float' to 'int', possible loss of data
+     1>c:\users\atul\documents\iiser_repo\summers_2013\npl\latticeanalyser\latticeanalyser.cpp(384): warning C4244: '=' : conversion from 'float' to 'int', possible loss of data
+     1>c:\users\atul\documents\iiser_repo\summers_2013\npl\latticeanalyser\latticeanalyser.cpp(403): warning C4018: '<' : signed/unsigned mismatch
+     1>c:\users\atul\documents\iiser_repo\summers_2013\npl\latticeanalyser\latticeanalyser.cpp(489): warning C4244: 'initializing' : conversion from 'double' to 'float', possible loss of data
+     1>c:\users\atul\documents\iiser_repo\summers_2013\npl\latticeanalyser\latticeanalyser.cpp(673): warning C4244: '=' : conversion from 'int64' to 'double', possible loss of data
+       Link:
+         C:\Program Files (x86)\Microsoft Visual Studio 11.0\VC\bin\link.exe /ERRORREPORT:PROMPT /OUT:"C:\Users\Atul\Documents\IISER_repo\Summers_2013\NPL\latticeAnalyser\vs2012\latticeAnalyser\Debug\latticeAnalyser.exe" /INCREMENTAL /NOLOGO /LIBPATH:C:\opencv\build\x86\vc11\lib opencv_core245d.lib opencv_imgproc245d.lib opencv_highgui245d.lib opencv_ml245d.lib opencv_video245d.lib opencv_features2d245d.lib opencv_calib3d245d.lib opencv_objdetect245d.lib opencv_contrib245d.lib opencv_legacy245d.lib opencv_flann245d.lib kernel32.lib user32.lib gdi32.lib winspool.lib comdlg32.lib advapi32.lib shell32.lib ole32.lib oleaut32.lib uuid.lib odbc32.lib odbccp32.lib /MANIFEST /MANIFESTUAC:"level='asInvoker' uiAccess='false'" /manifest:embed /DEBUG /PDB:"C:\Users\Atul\Documents\IISER_repo\Summers_2013\NPL\latticeAnalyser\vs2012\latticeAnalyser\Debug\latticeAnalyser.pdb" /SUBSYSTEM:CONSOLE /TLBID:1 /DYNAMICBASE /NXCOMPAT /IMPLIB:"C:\Users\Atul\Documents\IISER_repo\Summers_2013\NPL\latticeAnalyser\vs2012\latticeAnalyser\Debug\latticeAnalyser.lib" /MACHINE:X86 Debug\latticeAnalyser.obj
+         latticeAnalyser.vcxproj -> C:\Users\Atul\Documents\IISER_repo\Summers_2013\NPL\latticeAnalyser\vs2012\latticeAnalyser\Debug\latticeAnalyser.exe
+     1>Done Building Project "C:\Users\Atul\Documents\IISER_repo\Summers_2013\NPL\latticeAnalyser\vs2012\latticeAnalyser\latticeAnalyser.vcxproj" (Build target(s)).
+
+Build succeeded.
+
+Time Elapsed 00:00:02.20

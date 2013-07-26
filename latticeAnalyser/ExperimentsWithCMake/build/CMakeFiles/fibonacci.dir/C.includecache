@@ -1,0 +1,14 @@
+#IncludeRegexLine: ^[ 	]*#[ 	]*(include|import)[ 	]*[<"]([^">]+)([">])
+
+#IncludeRegexScan: ^.*$
+
+#IncludeRegexComplain: ^$
+
+#IncludeRegexTransform: 
+
+/home/atul/IISER_repo/Summers_2013/NPL/latticeAnalyser/ExperimentsWithCMake/fib.c
+stdio.h
+/home/atul/IISER_repo/Summers_2013/NPL/latticeAnalyser/ExperimentsWithCMake/stdio.h
+stdlib.h
+/home/atul/IISER_repo/Summers_2013/NPL/latticeAnalyser/ExperimentsWithCMake/stdlib.h
+

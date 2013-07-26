@@ -1,0 +1,61 @@
+﻿Build started 06/06/2013 09:36:53 PM.
+     1>Project "C:\Users\Atul\Documents\IISER_repo\Summers_2013\NPL\latticeAnalyser\vs2012\latticeAnalyser\latticeAnalyser.vcxproj" on node 2 (Build target(s)).
+     1>ClCompile:
+         C:\Program Files (x86)\Microsoft Visual Studio 11.0\VC\bin\CL.exe /c /IC:\Users\Atul\Documents\IISER_repo\Summers_2013\NPL\latticeAnalyser\include /IC:\opencv\build\include /Zi /nologo /W3 /WX- /O2 /Oi /Oy- /GL /D WIN32 /D NDEBUG /D _CONSOLE /D _UNICODE /D UNICODE /Gm- /EHsc /MD /GS /Gy /fp:precise /Zc:wchar_t /Zc:forScope /Fo"Release\\" /Fd"Release\vc110.pdb" /Gd /TP /analyze- /errorReport:prompt ..\..\latticeAnalyser.cpp
+         latticeAnalyser.cpp
+     1>..\..\latticeAnalyser.cpp(65): warning C4305: 'initializing' : truncation from 'double' to 'const float'
+     1>..\..\latticeAnalyser.cpp(89): error C2143: syntax error : missing ';' before '<'
+     1>..\..\latticeAnalyser.cpp(89): error C4430: missing type specifier - int assumed. Note: C++ does not support default-int
+     1>..\..\latticeAnalyser.cpp(105): error C2872: 'atomic' : ambiguous symbol
+                 could be '..\..\latticeAnalyser.cpp(89) : int atomic'
+                 or       'C:\Program Files (x86)\Microsoft Visual Studio 11.0\VC\include\atomic(914) : std::atomic'
+     1>..\..\latticeAnalyser.cpp(105): error C2143: syntax error : missing ';' before '<'
+     1>..\..\latticeAnalyser.cpp(105): error C4430: missing type specifier - int assumed. Note: C++ does not support default-int
+     1>..\..\latticeAnalyser.cpp(105): error C2086: 'int atomic' : redefinition
+                 ..\..\latticeAnalyser.cpp(89) : see declaration of 'atomic'
+     1>..\..\latticeAnalyser.cpp(106): error C2872: 'atomic' : ambiguous symbol
+                 could be '..\..\latticeAnalyser.cpp(89) : int atomic'
+                 or       'C:\Program Files (x86)\Microsoft Visual Studio 11.0\VC\include\atomic(914) : std::atomic'
+     1>..\..\latticeAnalyser.cpp(106): error C2143: syntax error : missing ';' before '<'
+     1>..\..\latticeAnalyser.cpp(106): error C4430: missing type specifier - int assumed. Note: C++ does not support default-int
+     1>..\..\latticeAnalyser.cpp(106): error C2086: 'int atomic' : redefinition
+                 ..\..\latticeAnalyser.cpp(89) : see declaration of 'atomic'
+     1>..\..\latticeAnalyser.cpp(120): error C2872: 'atomic' : ambiguous symbol
+                 could be '..\..\latticeAnalyser.cpp(89) : int atomic'
+                 or       'C:\Program Files (x86)\Microsoft Visual Studio 11.0\VC\include\atomic(914) : std::atomic'
+     1>..\..\latticeAnalyser.cpp(120): error C2143: syntax error : missing ';' before '<'
+     1>..\..\latticeAnalyser.cpp(120): error C4430: missing type specifier - int assumed. Note: C++ does not support default-int
+     1>..\..\latticeAnalyser.cpp(120): error C2086: 'int atomic' : redefinition
+                 ..\..\latticeAnalyser.cpp(89) : see declaration of 'atomic'
+     1>..\..\latticeAnalyser.cpp(142): warning C4305: 'initializing' : truncation from 'double' to 'float'
+     1>..\..\latticeAnalyser.cpp(282): error C2065: 'threadsEnabled' : undeclared identifier
+     1>..\..\latticeAnalyser.cpp(286): error C2065: 'frameRequested' : undeclared identifier
+     1>..\..\latticeAnalyser.cpp(289): error C2065: 'frameGrabbed' : undeclared identifier
+     1>..\..\latticeAnalyser.cpp(332): error C2065: 'threadsEnabled' : undeclared identifier
+     1>..\..\latticeAnalyser.cpp(336): error C2065: 'updateDisplayRequested' : undeclared identifier
+     1>..\..\latticeAnalyser.cpp(341): error C2065: 'updateDisplayRequested' : undeclared identifier
+     1>..\..\latticeAnalyser.cpp(414): error C2065: 'frameRequested' : undeclared identifier
+     1>..\..\latticeAnalyser.cpp(416): error C2065: 'frameGrabbed' : undeclared identifier
+     1>..\..\latticeAnalyser.cpp(416): warning C4805: '==' : unsafe mix of type ''unknown-type'' and type 'bool' in operation
+     1>..\..\latticeAnalyser.cpp(422): error C2065: 'frameRequested' : undeclared identifier
+     1>..\..\latticeAnalyser.cpp(423): error C2065: 'frameGrabbed' : undeclared identifier
+     1>..\..\latticeAnalyser.cpp(435): warning C4244: '=' : conversion from 'int64' to 'double', possible loss of data
+     1>..\..\latticeAnalyser.cpp(439): warning C4244: '=' : conversion from 'int64' to 'long', possible loss of data
+     1>..\..\latticeAnalyser.cpp(582): warning C4018: '<' : signed/unsigned mismatch
+     1>..\..\latticeAnalyser.cpp(586): warning C4018: '<' : signed/unsigned mismatch
+     1>..\..\latticeAnalyser.cpp(594): warning C4244: 'argument' : conversion from 'float' to 'int', possible loss of data
+     1>..\..\latticeAnalyser.cpp(595): warning C4244: 'initializing' : conversion from 'int' to 'float', possible loss of data
+     1>..\..\latticeAnalyser.cpp(601): warning C4244: 'initializing' : conversion from 'double' to 'float', possible loss of data
+     1>..\..\latticeAnalyser.cpp(624): warning C4244: '=' : conversion from 'float' to 'int', possible loss of data
+     1>..\..\latticeAnalyser.cpp(625): warning C4244: '=' : conversion from 'float' to 'int', possible loss of data
+     1>..\..\latticeAnalyser.cpp(644): warning C4018: '<' : signed/unsigned mismatch
+     1>..\..\latticeAnalyser.cpp(730): warning C4244: 'initializing' : conversion from 'double' to 'float', possible loss of data
+     1>..\..\latticeAnalyser.cpp(826): error C2065: 'updateDisplayRequested' : undeclared identifier
+     1>..\..\latticeAnalyser.cpp(924): error C2065: 'threadsEnabled' : undeclared identifier
+     1>..\..\latticeAnalyser.cpp(941): warning C4244: '=' : conversion from 'int64' to 'double', possible loss of data
+     1>..\..\latticeAnalyser.cpp(1043): error C2065: 'threadsEnabled' : undeclared identifier
+     1>Done Building Project "C:\Users\Atul\Documents\IISER_repo\Summers_2013\NPL\latticeAnalyser\vs2012\latticeAnalyser\latticeAnalyser.vcxproj" (Build target(s)) -- FAILED.
+
+Build FAILED.
+
+Time Elapsed 00:00:01.56

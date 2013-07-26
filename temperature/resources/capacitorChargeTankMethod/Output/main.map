@@ -1,0 +1,667 @@
+Archive member included because of file (symbol)
+
+/opt/avr/lib/gcc/avr/4.8.0/avr4/libgcc.a(_exit.o)
+                              /opt/avr/lib/gcc/avr/4.8.0/../../../../avr/lib/avr4/crtm8.o (exit)
+/opt/avr/lib/gcc/avr/4.8.0/avr4/libgcc.a(_copy_data.o)
+                              Objects/capacitor_chargetank_Retry_2012_1.o (__do_copy_data)
+/opt/avr/lib/gcc/avr/4.8.0/avr4/libgcc.a(_clear_bss.o)
+                              Objects/capacitor_chargetank_Retry_2012_1.o (__do_clear_bss)
+/opt/avr/lib/gcc/avr/4.8.0/../../../../avr/lib/avr4/libc.a(strcpy.o)
+                              Objects/capacitor_chargetank_Retry_2012_1.o (strcpy)
+/opt/avr/lib/gcc/avr/4.8.0/../../../../avr/lib/avr4/libc.a(sprintf.o)
+                              Objects/capacitor_chargetank_Retry_2012_1.o (sprintf)
+/opt/avr/lib/gcc/avr/4.8.0/../../../../avr/lib/avr4/libc.a(vfprintf_std.o)
+                              /opt/avr/lib/gcc/avr/4.8.0/../../../../avr/lib/avr4/libc.a(sprintf.o) (vfprintf)
+/opt/avr/lib/gcc/avr/4.8.0/../../../../avr/lib/avr4/libc.a(strnlen_P.o)
+                              /opt/avr/lib/gcc/avr/4.8.0/../../../../avr/lib/avr4/libc.a(vfprintf_std.o) (strnlen_P)
+/opt/avr/lib/gcc/avr/4.8.0/../../../../avr/lib/avr4/libc.a(strnlen.o)
+                              /opt/avr/lib/gcc/avr/4.8.0/../../../../avr/lib/avr4/libc.a(vfprintf_std.o) (strnlen)
+/opt/avr/lib/gcc/avr/4.8.0/../../../../avr/lib/avr4/libc.a(fputc.o)
+                              /opt/avr/lib/gcc/avr/4.8.0/../../../../avr/lib/avr4/libc.a(vfprintf_std.o) (fputc)
+/opt/avr/lib/gcc/avr/4.8.0/../../../../avr/lib/avr4/libc.a(ultoa_invert.o)
+                              /opt/avr/lib/gcc/avr/4.8.0/../../../../avr/lib/avr4/libc.a(vfprintf_std.o) (__ultoa_invert)
+/opt/avr/lib/gcc/avr/4.8.0/avr4/libgcc.a(_prologue.o)
+                              /opt/avr/lib/gcc/avr/4.8.0/../../../../avr/lib/avr4/libc.a(sprintf.o) (__prologue_saves__)
+/opt/avr/lib/gcc/avr/4.8.0/avr4/libgcc.a(_epilogue.o)
+                              /opt/avr/lib/gcc/avr/4.8.0/../../../../avr/lib/avr4/libc.a(sprintf.o) (__epilogue_restores__)
+
+Allocating common symbols
+Common symbol       size              file
+
+b                   0x2               Objects/capacitor_chargetank_Retry_2012_1.o
+measured            0x2               Objects/capacitor_chargetank_Retry_2012_1.o
+i                   0x2               Objects/capacitor_chargetank_Retry_2012_1.o
+test                0xa               Objects/capacitor_chargetank_Retry_2012_1.o
+waiting             0x2               Objects/capacitor_chargetank_Retry_2012_1.o
+wtemp               0x2               Objects/capacitor_chargetank_Retry_2012_1.o
+drive_ctr           0x2               Objects/capacitor_chargetank_Retry_2012_1.o
+
+Memory Configuration
+
+Name             Origin             Length             Attributes
+text             0x00000000         0x00002000         xr
+data             0x00800060         0x0000ffa0         rw !x
+eeprom           0x00810000         0x00010000         rw !x
+fuse             0x00820000         0x00000400         rw !x
+lock             0x00830000         0x00000400         rw !x
+signature        0x00840000         0x00000400         rw !x
+*default*        0x00000000         0xffffffff
+
+Linker script and memory map
+
+LOAD /opt/avr/lib/gcc/avr/4.8.0/../../../../avr/lib/avr4/crtm8.o
+LOAD Objects/capacitor_chargetank_Retry_2012_1.o
+LOAD Objects/lcd.o
+LOAD /opt/avr/lib/gcc/avr/4.8.0/../../../../avr/lib/avr4/libm.a
+START GROUP
+LOAD /opt/avr/lib/gcc/avr/4.8.0/avr4/libgcc.a
+LOAD /opt/avr/lib/gcc/avr/4.8.0/../../../../avr/lib/avr4/libm.a
+LOAD /opt/avr/lib/gcc/avr/4.8.0/../../../../avr/lib/avr4/libc.a
+END GROUP
+
+.hash
+ *(.hash)
+
+.dynsym
+ *(.dynsym)
+
+.dynstr
+ *(.dynstr)
+
+.gnu.version
+ *(.gnu.version)
+
+.gnu.version_d
+ *(.gnu.version_d)
+
+.gnu.version_r
+ *(.gnu.version_r)
+
+.rel.init
+ *(.rel.init)
+
+.rela.init
+ *(.rela.init)
+
+.rel.text
+ *(.rel.text)
+ *(.rel.text.*)
+ *(.rel.gnu.linkonce.t*)
+
+.rela.text
+ *(.rela.text)
+ *(.rela.text.*)
+ *(.rela.gnu.linkonce.t*)
+
+.rel.fini
+ *(.rel.fini)
+
+.rela.fini
+ *(.rela.fini)
+
+.rel.rodata
+ *(.rel.rodata)
+ *(.rel.rodata.*)
+ *(.rel.gnu.linkonce.r*)
+
+.rela.rodata
+ *(.rela.rodata)
+ *(.rela.rodata.*)
+ *(.rela.gnu.linkonce.r*)
+
+.rel.data
+ *(.rel.data)
+ *(.rel.data.*)
+ *(.rel.gnu.linkonce.d*)
+
+.rela.data
+ *(.rela.data)
+ *(.rela.data.*)
+ *(.rela.gnu.linkonce.d*)
+
+.rel.ctors
+ *(.rel.ctors)
+
+.rela.ctors
+ *(.rela.ctors)
+
+.rel.dtors
+ *(.rel.dtors)
+
+.rela.dtors
+ *(.rela.dtors)
+
+.rel.got
+ *(.rel.got)
+
+.rela.got
+ *(.rela.got)
+
+.rel.bss
+ *(.rel.bss)
+
+.rela.bss
+ *(.rela.bss)
+
+.rel.plt
+ *(.rel.plt)
+
+.rela.plt
+ *(.rela.plt)
+
+.text           0x00000000      0xa1c
+ *(.vectors)
+ .vectors       0x00000000       0x26 /opt/avr/lib/gcc/avr/4.8.0/../../../../avr/lib/avr4/crtm8.o
+                0x00000000                __vectors
+                0x00000000                __vector_default
+ *(.vectors)
+ *(.progmem.gcc*)
+ *(.progmem*)
+                0x00000026                . = ALIGN (0x2)
+                0x00000026                __trampolines_start = .
+ *(.trampolines)
+ .trampolines   0x00000026        0x0 linker stubs
+ *(.trampolines*)
+                0x00000026                __trampolines_end = .
+ *(.jumptables)
+ *(.jumptables*)
+ *(.lowtext)
+ *(.lowtext*)
+                0x00000026                __ctors_start = .
+ *(.ctors)
+                0x00000026                __ctors_end = .
+                0x00000026                __dtors_start = .
+ *(.dtors)
+                0x00000026                __dtors_end = .
+ SORT(*)(.ctors)
+ SORT(*)(.dtors)
+ *(.init0)
+ .init0         0x00000026        0x0 /opt/avr/lib/gcc/avr/4.8.0/../../../../avr/lib/avr4/crtm8.o
+                0x00000026                __init
+ *(.init0)
+ *(.init1)
+ *(.init1)
+ *(.init2)
+ .init2         0x00000026        0xc /opt/avr/lib/gcc/avr/4.8.0/../../../../avr/lib/avr4/crtm8.o
+ *(.init2)
+ *(.init3)
+ *(.init3)
+ *(.init4)
+ .init4         0x00000032       0x16 /opt/avr/lib/gcc/avr/4.8.0/avr4/libgcc.a(_copy_data.o)
+                0x00000032                __do_copy_data
+ .init4         0x00000048       0x10 /opt/avr/lib/gcc/avr/4.8.0/avr4/libgcc.a(_clear_bss.o)
+                0x00000048                __do_clear_bss
+ *(.init4)
+ *(.init5)
+ *(.init5)
+ *(.init6)
+ *(.init6)
+ *(.init7)
+ *(.init7)
+ *(.init8)
+ *(.init8)
+ *(.init9)
+ .init9         0x00000058        0x4 /opt/avr/lib/gcc/avr/4.8.0/../../../../avr/lib/avr4/crtm8.o
+ *(.init9)
+ *(.text)
+ .text          0x0000005c        0x2 /opt/avr/lib/gcc/avr/4.8.0/../../../../avr/lib/avr4/crtm8.o
+                0x0000005c                __vector_1
+                0x0000005c                __vector_12
+                0x0000005c                __bad_interrupt
+                0x0000005c                __vector_6
+                0x0000005c                __vector_3
+                0x0000005c                __vector_11
+                0x0000005c                __vector_13
+                0x0000005c                __vector_17
+                0x0000005c                __vector_7
+                0x0000005c                __vector_5
+                0x0000005c                __vector_4
+                0x0000005c                __vector_9
+                0x0000005c                __vector_2
+                0x0000005c                __vector_15
+                0x0000005c                __vector_14
+                0x0000005c                __vector_10
+                0x0000005c                __vector_18
+ .text          0x0000005e       0xa2 Objects/capacitor_chargetank_Retry_2012_1.o
+                0x0000005e                Init
+                0x0000008e                __vector_16
+                0x000000d2                __vector_8
+ .text          0x00000100      0x24e Objects/lcd.o
+                0x00000100                ms_spin
+                0x00000116                lcd_putchar
+                0x00000164                lcd_init
+                0x0000019a                lcd_clear
+                0x000001a0                lcd_string
+                0x000001f0                hex2ascii
+                0x00000260                long2ascii
+ .text          0x0000034e        0x0 /opt/avr/lib/gcc/avr/4.8.0/avr4/libgcc.a(_exit.o)
+ .text          0x0000034e        0x0 /opt/avr/lib/gcc/avr/4.8.0/avr4/libgcc.a(_copy_data.o)
+ .text          0x0000034e        0x0 /opt/avr/lib/gcc/avr/4.8.0/avr4/libgcc.a(_clear_bss.o)
+ .text          0x0000034e        0x0 /opt/avr/lib/gcc/avr/4.8.0/../../../../avr/lib/avr4/libc.a(strcpy.o)
+ .text          0x0000034e        0x0 /opt/avr/lib/gcc/avr/4.8.0/../../../../avr/lib/avr4/libc.a(sprintf.o)
+ .text          0x0000034e        0x0 /opt/avr/lib/gcc/avr/4.8.0/../../../../avr/lib/avr4/libc.a(vfprintf_std.o)
+ .text          0x0000034e        0x0 /opt/avr/lib/gcc/avr/4.8.0/../../../../avr/lib/avr4/libc.a(strnlen_P.o)
+ .text          0x0000034e        0x0 /opt/avr/lib/gcc/avr/4.8.0/../../../../avr/lib/avr4/libc.a(strnlen.o)
+ .text          0x0000034e        0x0 /opt/avr/lib/gcc/avr/4.8.0/../../../../avr/lib/avr4/libc.a(fputc.o)
+ .text          0x0000034e        0x0 /opt/avr/lib/gcc/avr/4.8.0/../../../../avr/lib/avr4/libc.a(ultoa_invert.o)
+ .text          0x0000034e        0x0 /opt/avr/lib/gcc/avr/4.8.0/avr4/libgcc.a(_prologue.o)
+ .text          0x0000034e        0x0 /opt/avr/lib/gcc/avr/4.8.0/avr4/libgcc.a(_epilogue.o)
+                0x0000034e                . = ALIGN (0x2)
+ *(.text.*)
+ .text.startup  0x0000034e      0x13e Objects/capacitor_chargetank_Retry_2012_1.o
+                0x0000034e                main
+ .text.libgcc.mul
+                0x0000048c        0x0 /opt/avr/lib/gcc/avr/4.8.0/avr4/libgcc.a(_exit.o)
+ .text.libgcc.div
+                0x0000048c        0x0 /opt/avr/lib/gcc/avr/4.8.0/avr4/libgcc.a(_exit.o)
+ .text.libgcc   0x0000048c        0x0 /opt/avr/lib/gcc/avr/4.8.0/avr4/libgcc.a(_exit.o)
+ .text.libgcc.prologue
+                0x0000048c        0x0 /opt/avr/lib/gcc/avr/4.8.0/avr4/libgcc.a(_exit.o)
+ .text.libgcc.builtins
+                0x0000048c        0x0 /opt/avr/lib/gcc/avr/4.8.0/avr4/libgcc.a(_exit.o)
+ .text.libgcc.fmul
+                0x0000048c        0x0 /opt/avr/lib/gcc/avr/4.8.0/avr4/libgcc.a(_exit.o)
+ .text.libgcc.fixed
+                0x0000048c        0x0 /opt/avr/lib/gcc/avr/4.8.0/avr4/libgcc.a(_exit.o)
+ .text.libgcc.mul
+                0x0000048c        0x0 /opt/avr/lib/gcc/avr/4.8.0/avr4/libgcc.a(_copy_data.o)
+ .text.libgcc.div
+                0x0000048c        0x0 /opt/avr/lib/gcc/avr/4.8.0/avr4/libgcc.a(_copy_data.o)
+ .text.libgcc   0x0000048c        0x0 /opt/avr/lib/gcc/avr/4.8.0/avr4/libgcc.a(_copy_data.o)
+ .text.libgcc.prologue
+                0x0000048c        0x0 /opt/avr/lib/gcc/avr/4.8.0/avr4/libgcc.a(_copy_data.o)
+ .text.libgcc.builtins
+                0x0000048c        0x0 /opt/avr/lib/gcc/avr/4.8.0/avr4/libgcc.a(_copy_data.o)
+ .text.libgcc.fmul
+                0x0000048c        0x0 /opt/avr/lib/gcc/avr/4.8.0/avr4/libgcc.a(_copy_data.o)
+ .text.libgcc.fixed
+                0x0000048c        0x0 /opt/avr/lib/gcc/avr/4.8.0/avr4/libgcc.a(_copy_data.o)
+ .text.libgcc.mul
+                0x0000048c        0x0 /opt/avr/lib/gcc/avr/4.8.0/avr4/libgcc.a(_clear_bss.o)
+ .text.libgcc.div
+                0x0000048c        0x0 /opt/avr/lib/gcc/avr/4.8.0/avr4/libgcc.a(_clear_bss.o)
+ .text.libgcc   0x0000048c        0x0 /opt/avr/lib/gcc/avr/4.8.0/avr4/libgcc.a(_clear_bss.o)
+ .text.libgcc.prologue
+                0x0000048c        0x0 /opt/avr/lib/gcc/avr/4.8.0/avr4/libgcc.a(_clear_bss.o)
+ .text.libgcc.builtins
+                0x0000048c        0x0 /opt/avr/lib/gcc/avr/4.8.0/avr4/libgcc.a(_clear_bss.o)
+ .text.libgcc.fmul
+                0x0000048c        0x0 /opt/avr/lib/gcc/avr/4.8.0/avr4/libgcc.a(_clear_bss.o)
+ .text.libgcc.fixed
+                0x0000048c        0x0 /opt/avr/lib/gcc/avr/4.8.0/avr4/libgcc.a(_clear_bss.o)
+ .text.avr-libc
+                0x0000048c        0xe /opt/avr/lib/gcc/avr/4.8.0/../../../../avr/lib/avr4/libc.a(strcpy.o)
+                0x0000048c                strcpy
+ .text.avr-libc
+                0x0000049a       0x3e /opt/avr/lib/gcc/avr/4.8.0/../../../../avr/lib/avr4/libc.a(sprintf.o)
+                0x0000049a                sprintf
+ .text.avr-libc
+                0x000004d8      0x386 /opt/avr/lib/gcc/avr/4.8.0/../../../../avr/lib/avr4/libc.a(vfprintf_std.o)
+                0x000004d8                vfprintf
+ .text.avr-libc
+                0x0000085e       0x16 /opt/avr/lib/gcc/avr/4.8.0/../../../../avr/lib/avr4/libc.a(strnlen_P.o)
+                0x0000085e                strnlen_P
+ .text.avr-libc
+                0x00000874       0x16 /opt/avr/lib/gcc/avr/4.8.0/../../../../avr/lib/avr4/libc.a(strnlen.o)
+                0x00000874                strnlen
+ .text.avr-libc
+                0x0000088a       0x64 /opt/avr/lib/gcc/avr/4.8.0/../../../../avr/lib/avr4/libc.a(fputc.o)
+                0x0000088a                fputc
+ .text.avr-libc
+                0x000008ee       0xbc /opt/avr/lib/gcc/avr/4.8.0/../../../../avr/lib/avr4/libc.a(ultoa_invert.o)
+                0x000008ee                __ultoa_invert
+ .text.libgcc.mul
+                0x000009aa        0x0 /opt/avr/lib/gcc/avr/4.8.0/avr4/libgcc.a(_prologue.o)
+ .text.libgcc.div
+                0x000009aa        0x0 /opt/avr/lib/gcc/avr/4.8.0/avr4/libgcc.a(_prologue.o)
+ .text.libgcc   0x000009aa        0x0 /opt/avr/lib/gcc/avr/4.8.0/avr4/libgcc.a(_prologue.o)
+ .text.libgcc.prologue
+                0x000009aa       0x38 /opt/avr/lib/gcc/avr/4.8.0/avr4/libgcc.a(_prologue.o)
+                0x000009aa                __prologue_saves__
+ .text.libgcc.builtins
+                0x000009e2        0x0 /opt/avr/lib/gcc/avr/4.8.0/avr4/libgcc.a(_prologue.o)
+ .text.libgcc.fmul
+                0x000009e2        0x0 /opt/avr/lib/gcc/avr/4.8.0/avr4/libgcc.a(_prologue.o)
+ .text.libgcc.fixed
+                0x000009e2        0x0 /opt/avr/lib/gcc/avr/4.8.0/avr4/libgcc.a(_prologue.o)
+ .text.libgcc.mul
+                0x000009e2        0x0 /opt/avr/lib/gcc/avr/4.8.0/avr4/libgcc.a(_epilogue.o)
+ .text.libgcc.div
+                0x000009e2        0x0 /opt/avr/lib/gcc/avr/4.8.0/avr4/libgcc.a(_epilogue.o)
+ .text.libgcc   0x000009e2        0x0 /opt/avr/lib/gcc/avr/4.8.0/avr4/libgcc.a(_epilogue.o)
+ .text.libgcc.prologue
+                0x000009e2       0x36 /opt/avr/lib/gcc/avr/4.8.0/avr4/libgcc.a(_epilogue.o)
+                0x000009e2                __epilogue_restores__
+ .text.libgcc.builtins
+                0x00000a18        0x0 /opt/avr/lib/gcc/avr/4.8.0/avr4/libgcc.a(_epilogue.o)
+ .text.libgcc.fmul
+                0x00000a18        0x0 /opt/avr/lib/gcc/avr/4.8.0/avr4/libgcc.a(_epilogue.o)
+ .text.libgcc.fixed
+                0x00000a18        0x0 /opt/avr/lib/gcc/avr/4.8.0/avr4/libgcc.a(_epilogue.o)
+                0x00000a18                . = ALIGN (0x2)
+ *(.fini9)
+ .fini9         0x00000a18        0x0 /opt/avr/lib/gcc/avr/4.8.0/avr4/libgcc.a(_exit.o)
+                0x00000a18                exit
+                0x00000a18                _exit
+ *(.fini9)
+ *(.fini8)
+ *(.fini8)
+ *(.fini7)
+ *(.fini7)
+ *(.fini6)
+ *(.fini6)
+ *(.fini5)
+ *(.fini5)
+ *(.fini4)
+ *(.fini4)
+ *(.fini3)
+ *(.fini3)
+ *(.fini2)
+ *(.fini2)
+ *(.fini1)
+ *(.fini1)
+ *(.fini0)
+ .fini0         0x00000a18        0x4 /opt/avr/lib/gcc/avr/4.8.0/avr4/libgcc.a(_exit.o)
+ *(.fini0)
+                0x00000a1c                _etext = .
+
+.data           0x00800060       0x4e load address 0x00000a1c
+                0x00800060                PROVIDE (__data_start, .)
+ *(.data)
+ .data          0x00800060        0x0 /opt/avr/lib/gcc/avr/4.8.0/../../../../avr/lib/avr4/crtm8.o
+ .data          0x00800060        0x2 Objects/capacitor_chargetank_Retry_2012_1.o
+                0x00800060                drive_length
+ .data          0x00800062       0x28 Objects/lcd.o
+                0x00800062                tenths_tab
+ .data          0x0080008a        0x0 /opt/avr/lib/gcc/avr/4.8.0/avr4/libgcc.a(_exit.o)
+ .data          0x0080008a        0x0 /opt/avr/lib/gcc/avr/4.8.0/avr4/libgcc.a(_copy_data.o)
+ .data          0x0080008a        0x0 /opt/avr/lib/gcc/avr/4.8.0/avr4/libgcc.a(_clear_bss.o)
+ .data          0x0080008a        0x0 /opt/avr/lib/gcc/avr/4.8.0/../../../../avr/lib/avr4/libc.a(strcpy.o)
+ .data          0x0080008a        0x0 /opt/avr/lib/gcc/avr/4.8.0/../../../../avr/lib/avr4/libc.a(sprintf.o)
+ .data          0x0080008a        0x0 /opt/avr/lib/gcc/avr/4.8.0/../../../../avr/lib/avr4/libc.a(vfprintf_std.o)
+ .data          0x0080008a        0x0 /opt/avr/lib/gcc/avr/4.8.0/../../../../avr/lib/avr4/libc.a(strnlen_P.o)
+ .data          0x0080008a        0x0 /opt/avr/lib/gcc/avr/4.8.0/../../../../avr/lib/avr4/libc.a(strnlen.o)
+ .data          0x0080008a        0x0 /opt/avr/lib/gcc/avr/4.8.0/../../../../avr/lib/avr4/libc.a(fputc.o)
+ .data          0x0080008a        0x0 /opt/avr/lib/gcc/avr/4.8.0/../../../../avr/lib/avr4/libc.a(ultoa_invert.o)
+ .data          0x0080008a        0x0 /opt/avr/lib/gcc/avr/4.8.0/avr4/libgcc.a(_prologue.o)
+ .data          0x0080008a        0x0 /opt/avr/lib/gcc/avr/4.8.0/avr4/libgcc.a(_epilogue.o)
+ *(.data*)
+ *(.rodata)
+ *(.rodata*)
+ .rodata.str1.1
+                0x0080008a       0x23 Objects/capacitor_chargetank_Retry_2012_1.o
+ *(.gnu.linkonce.d*)
+                0x008000ae                . = ALIGN (0x2)
+ *fill*         0x008000ad        0x1 
+                0x008000ae                _edata = .
+                0x008000ae                PROVIDE (__data_end, .)
+
+.bss            0x008000ae       0x20
+                0x008000ae                PROVIDE (__bss_start, .)
+ *(.bss)
+ .bss           0x008000ae        0x0 /opt/avr/lib/gcc/avr/4.8.0/../../../../avr/lib/avr4/crtm8.o
+ .bss           0x008000ae        0xa Objects/capacitor_chargetank_Retry_2012_1.o
+                0x008000ae                count
+                0x008000b0                antihang
+                0x008000b2                measured_high
+                0x008000b4                high_word
+ .bss           0x008000b8        0x0 Objects/lcd.o
+ .bss           0x008000b8        0x0 /opt/avr/lib/gcc/avr/4.8.0/avr4/libgcc.a(_exit.o)
+ .bss           0x008000b8        0x0 /opt/avr/lib/gcc/avr/4.8.0/avr4/libgcc.a(_copy_data.o)
+ .bss           0x008000b8        0x0 /opt/avr/lib/gcc/avr/4.8.0/avr4/libgcc.a(_clear_bss.o)
+ .bss           0x008000b8        0x0 /opt/avr/lib/gcc/avr/4.8.0/../../../../avr/lib/avr4/libc.a(strcpy.o)
+ .bss           0x008000b8        0x0 /opt/avr/lib/gcc/avr/4.8.0/../../../../avr/lib/avr4/libc.a(sprintf.o)
+ .bss           0x008000b8        0x0 /opt/avr/lib/gcc/avr/4.8.0/../../../../avr/lib/avr4/libc.a(vfprintf_std.o)
+ .bss           0x008000b8        0x0 /opt/avr/lib/gcc/avr/4.8.0/../../../../avr/lib/avr4/libc.a(strnlen_P.o)
+ .bss           0x008000b8        0x0 /opt/avr/lib/gcc/avr/4.8.0/../../../../avr/lib/avr4/libc.a(strnlen.o)
+ .bss           0x008000b8        0x0 /opt/avr/lib/gcc/avr/4.8.0/../../../../avr/lib/avr4/libc.a(fputc.o)
+ .bss           0x008000b8        0x0 /opt/avr/lib/gcc/avr/4.8.0/../../../../avr/lib/avr4/libc.a(ultoa_invert.o)
+ .bss           0x008000b8        0x0 /opt/avr/lib/gcc/avr/4.8.0/avr4/libgcc.a(_prologue.o)
+ .bss           0x008000b8        0x0 /opt/avr/lib/gcc/avr/4.8.0/avr4/libgcc.a(_epilogue.o)
+ *(.bss*)
+ *(COMMON)
+ COMMON         0x008000b8       0x16 Objects/capacitor_chargetank_Retry_2012_1.o
+                0x008000b8                b
+                0x008000ba                measured
+                0x008000bc                i
+                0x008000be                test
+                0x008000c8                waiting
+                0x008000ca                wtemp
+                0x008000cc                drive_ctr
+                0x008000ce                PROVIDE (__bss_end, .)
+                0x00000a1c                __data_load_start = LOADADDR (.data)
+                0x00000a6a                __data_load_end = (__data_load_start + SIZEOF (.data))
+
+.noinit         0x008000ce        0x0
+                0x008000ce                PROVIDE (__noinit_start, .)
+ *(.noinit*)
+                0x008000ce                PROVIDE (__noinit_end, .)
+                0x008000ce                _end = .
+                0x008000ce                PROVIDE (__heap_start, .)
+
+.eeprom         0x00810000        0x0
+ *(.eeprom*)
+                0x00810000                __eeprom_end = .
+
+.fuse
+ *(.fuse)
+ *(.lfuse)
+ *(.hfuse)
+ *(.efuse)
+
+.lock
+ *(.lock*)
+
+.signature
+ *(.signature*)
+
+.stab           0x00000000     0x2664
+ *(.stab)
+ .stab          0x00000000      0x6cc /opt/avr/lib/gcc/avr/4.8.0/../../../../avr/lib/avr4/crtm8.o
+ .stab          0x000006cc       0x6c /opt/avr/lib/gcc/avr/4.8.0/avr4/libgcc.a(_exit.o)
+                                 0x78 (size before relaxing)
+ .stab          0x00000738       0xd8 /opt/avr/lib/gcc/avr/4.8.0/avr4/libgcc.a(_copy_data.o)
+                                 0xe4 (size before relaxing)
+ .stab          0x00000810       0xb4 /opt/avr/lib/gcc/avr/4.8.0/avr4/libgcc.a(_clear_bss.o)
+                                 0xc0 (size before relaxing)
+ .stab          0x000008c4       0x6c /opt/avr/lib/gcc/avr/4.8.0/../../../../avr/lib/avr4/libc.a(strcpy.o)
+                                 0x78 (size before relaxing)
+ .stab          0x00000930      0x540 /opt/avr/lib/gcc/avr/4.8.0/../../../../avr/lib/avr4/libc.a(sprintf.o)
+                                0x54c (size before relaxing)
+ .stab          0x00000e70      0xba0 /opt/avr/lib/gcc/avr/4.8.0/../../../../avr/lib/avr4/libc.a(vfprintf_std.o)
+                                0xd80 (size before relaxing)
+ .stab          0x00001a10       0x9c /opt/avr/lib/gcc/avr/4.8.0/../../../../avr/lib/avr4/libc.a(strnlen_P.o)
+                                 0xa8 (size before relaxing)
+ .stab          0x00001aac       0x9c /opt/avr/lib/gcc/avr/4.8.0/../../../../avr/lib/avr4/libc.a(strnlen.o)
+                                 0xa8 (size before relaxing)
+ .stab          0x00001b48      0x354 /opt/avr/lib/gcc/avr/4.8.0/../../../../avr/lib/avr4/libc.a(fputc.o)
+                                0x534 (size before relaxing)
+ .stab          0x00001e9c      0x480 /opt/avr/lib/gcc/avr/4.8.0/../../../../avr/lib/avr4/libc.a(ultoa_invert.o)
+                                0x48c (size before relaxing)
+ .stab          0x0000231c      0x1a4 /opt/avr/lib/gcc/avr/4.8.0/avr4/libgcc.a(_prologue.o)
+                                0x1b0 (size before relaxing)
+ .stab          0x000024c0      0x1a4 /opt/avr/lib/gcc/avr/4.8.0/avr4/libgcc.a(_epilogue.o)
+                                0x1b0 (size before relaxing)
+
+.stabstr        0x00000000     0x10e6
+ *(.stabstr)
+ .stabstr       0x00000000     0x10e6 /opt/avr/lib/gcc/avr/4.8.0/../../../../avr/lib/avr4/crtm8.o
+
+.stab.excl
+ *(.stab.excl)
+
+.stab.exclstr
+ *(.stab.exclstr)
+
+.stab.index
+ *(.stab.index)
+
+.stab.indexstr
+ *(.stab.indexstr)
+
+.comment        0x00000000       0x11
+ *(.comment)
+ .comment       0x00000000       0x11 Objects/capacitor_chargetank_Retry_2012_1.o
+                                 0x12 (size before relaxing)
+ .comment       0x00000000       0x12 Objects/lcd.o
+ .comment       0x00000000       0x12 /opt/avr/lib/gcc/avr/4.8.0/../../../../avr/lib/avr4/libc.a(sprintf.o)
+ .comment       0x00000000       0x12 /opt/avr/lib/gcc/avr/4.8.0/../../../../avr/lib/avr4/libc.a(vfprintf_std.o)
+ .comment       0x00000000       0x12 /opt/avr/lib/gcc/avr/4.8.0/../../../../avr/lib/avr4/libc.a(fputc.o)
+
+.debug
+ *(.debug)
+
+.line
+ *(.line)
+
+.debug_srcinfo
+ *(.debug_srcinfo)
+
+.debug_sfnames
+ *(.debug_sfnames)
+
+.debug_aranges  0x00000000       0x48
+ *(.debug_aranges)
+ .debug_aranges
+                0x00000000       0x28 Objects/capacitor_chargetank_Retry_2012_1.o
+ .debug_aranges
+                0x00000028       0x20 Objects/lcd.o
+
+.debug_pubnames
+ *(.debug_pubnames)
+
+.debug_info     0x00000000      0x822
+ *(.debug_info)
+ .debug_info    0x00000000      0x39f Objects/capacitor_chargetank_Retry_2012_1.o
+ .debug_info    0x0000039f      0x483 Objects/lcd.o
+ *(.gnu.linkonce.wi.*)
+
+.debug_abbrev   0x00000000      0x3b2
+ *(.debug_abbrev)
+ .debug_abbrev  0x00000000      0x1f5 Objects/capacitor_chargetank_Retry_2012_1.o
+ .debug_abbrev  0x000001f5      0x1bd Objects/lcd.o
+
+.debug_line     0x00000000      0x2c5
+ *(.debug_line)
+ .debug_line    0x00000000      0x159 Objects/capacitor_chargetank_Retry_2012_1.o
+ .debug_line    0x00000159      0x16c Objects/lcd.o
+
+.debug_frame    0x00000000      0x1c0
+ *(.debug_frame)
+ .debug_frame   0x00000000       0xac Objects/capacitor_chargetank_Retry_2012_1.o
+ .debug_frame   0x000000ac      0x114 Objects/lcd.o
+
+.debug_str      0x00000000      0x2c9
+ *(.debug_str)
+ .debug_str     0x00000000      0x248 Objects/capacitor_chargetank_Retry_2012_1.o
+                                0x28e (size before relaxing)
+ .debug_str     0x00000248       0x81 Objects/lcd.o
+                                0x24c (size before relaxing)
+
+.debug_loc      0x00000000      0x69d
+ *(.debug_loc)
+ .debug_loc     0x00000000      0x150 Objects/capacitor_chargetank_Retry_2012_1.o
+ .debug_loc     0x00000150      0x54d Objects/lcd.o
+
+.debug_macinfo
+ *(.debug_macinfo)
+
+.debug_pubtypes
+ *(.debug_pubtypes)
+
+.debug_ranges   0x00000000       0x18
+ *(.debug_ranges)
+ .debug_ranges  0x00000000       0x18 Objects/capacitor_chargetank_Retry_2012_1.o
+
+.debug_macro
+ *(.debug_macro)
+OUTPUT(Output/main.elf elf32-avr)
+LOAD linker stubs
+
+Cross Reference Table
+
+Symbol                                            File
+Init                                              Objects/capacitor_chargetank_Retry_2012_1.o
+__bad_interrupt                                   /opt/avr/lib/gcc/avr/4.8.0/../../../../avr/lib/avr4/crtm8.o
+__bss_end                                         /opt/avr/lib/gcc/avr/4.8.0/avr4/libgcc.a(_clear_bss.o)
+__bss_start                                       /opt/avr/lib/gcc/avr/4.8.0/avr4/libgcc.a(_clear_bss.o)
+__data_end                                        /opt/avr/lib/gcc/avr/4.8.0/avr4/libgcc.a(_copy_data.o)
+__data_load_start                                 /opt/avr/lib/gcc/avr/4.8.0/avr4/libgcc.a(_copy_data.o)
+__data_start                                      /opt/avr/lib/gcc/avr/4.8.0/avr4/libgcc.a(_copy_data.o)
+__do_clear_bss                                    /opt/avr/lib/gcc/avr/4.8.0/avr4/libgcc.a(_clear_bss.o)
+                                                  Objects/capacitor_chargetank_Retry_2012_1.o
+__do_copy_data                                    /opt/avr/lib/gcc/avr/4.8.0/avr4/libgcc.a(_copy_data.o)
+                                                  Objects/lcd.o
+                                                  Objects/capacitor_chargetank_Retry_2012_1.o
+__epilogue_restores__                             /opt/avr/lib/gcc/avr/4.8.0/avr4/libgcc.a(_epilogue.o)
+                                                  /opt/avr/lib/gcc/avr/4.8.0/../../../../avr/lib/avr4/libc.a(vfprintf_std.o)
+                                                  /opt/avr/lib/gcc/avr/4.8.0/../../../../avr/lib/avr4/libc.a(sprintf.o)
+__heap_end                                        /opt/avr/lib/gcc/avr/4.8.0/../../../../avr/lib/avr4/crtm8.o
+__init                                            /opt/avr/lib/gcc/avr/4.8.0/../../../../avr/lib/avr4/crtm8.o
+__prologue_saves__                                /opt/avr/lib/gcc/avr/4.8.0/avr4/libgcc.a(_prologue.o)
+                                                  /opt/avr/lib/gcc/avr/4.8.0/../../../../avr/lib/avr4/libc.a(vfprintf_std.o)
+                                                  /opt/avr/lib/gcc/avr/4.8.0/../../../../avr/lib/avr4/libc.a(sprintf.o)
+__stack                                           /opt/avr/lib/gcc/avr/4.8.0/../../../../avr/lib/avr4/crtm8.o
+__ultoa_invert                                    /opt/avr/lib/gcc/avr/4.8.0/../../../../avr/lib/avr4/libc.a(ultoa_invert.o)
+                                                  /opt/avr/lib/gcc/avr/4.8.0/../../../../avr/lib/avr4/libc.a(vfprintf_std.o)
+__vector_1                                        /opt/avr/lib/gcc/avr/4.8.0/../../../../avr/lib/avr4/crtm8.o
+__vector_10                                       /opt/avr/lib/gcc/avr/4.8.0/../../../../avr/lib/avr4/crtm8.o
+__vector_11                                       /opt/avr/lib/gcc/avr/4.8.0/../../../../avr/lib/avr4/crtm8.o
+__vector_12                                       /opt/avr/lib/gcc/avr/4.8.0/../../../../avr/lib/avr4/crtm8.o
+__vector_13                                       /opt/avr/lib/gcc/avr/4.8.0/../../../../avr/lib/avr4/crtm8.o
+__vector_14                                       /opt/avr/lib/gcc/avr/4.8.0/../../../../avr/lib/avr4/crtm8.o
+__vector_15                                       /opt/avr/lib/gcc/avr/4.8.0/../../../../avr/lib/avr4/crtm8.o
+__vector_16                                       Objects/capacitor_chargetank_Retry_2012_1.o
+                                                  /opt/avr/lib/gcc/avr/4.8.0/../../../../avr/lib/avr4/crtm8.o
+__vector_17                                       /opt/avr/lib/gcc/avr/4.8.0/../../../../avr/lib/avr4/crtm8.o
+__vector_18                                       /opt/avr/lib/gcc/avr/4.8.0/../../../../avr/lib/avr4/crtm8.o
+__vector_2                                        /opt/avr/lib/gcc/avr/4.8.0/../../../../avr/lib/avr4/crtm8.o
+__vector_3                                        /opt/avr/lib/gcc/avr/4.8.0/../../../../avr/lib/avr4/crtm8.o
+__vector_4                                        /opt/avr/lib/gcc/avr/4.8.0/../../../../avr/lib/avr4/crtm8.o
+__vector_5                                        /opt/avr/lib/gcc/avr/4.8.0/../../../../avr/lib/avr4/crtm8.o
+__vector_6                                        /opt/avr/lib/gcc/avr/4.8.0/../../../../avr/lib/avr4/crtm8.o
+__vector_7                                        /opt/avr/lib/gcc/avr/4.8.0/../../../../avr/lib/avr4/crtm8.o
+__vector_8                                        Objects/capacitor_chargetank_Retry_2012_1.o
+                                                  /opt/avr/lib/gcc/avr/4.8.0/../../../../avr/lib/avr4/crtm8.o
+__vector_9                                        /opt/avr/lib/gcc/avr/4.8.0/../../../../avr/lib/avr4/crtm8.o
+__vector_default                                  /opt/avr/lib/gcc/avr/4.8.0/../../../../avr/lib/avr4/crtm8.o
+__vectors                                         /opt/avr/lib/gcc/avr/4.8.0/../../../../avr/lib/avr4/crtm8.o
+_exit                                             /opt/avr/lib/gcc/avr/4.8.0/avr4/libgcc.a(_exit.o)
+antihang                                          Objects/capacitor_chargetank_Retry_2012_1.o
+b                                                 Objects/capacitor_chargetank_Retry_2012_1.o
+count                                             Objects/capacitor_chargetank_Retry_2012_1.o
+drive_ctr                                         Objects/capacitor_chargetank_Retry_2012_1.o
+drive_length                                      Objects/capacitor_chargetank_Retry_2012_1.o
+exit                                              /opt/avr/lib/gcc/avr/4.8.0/avr4/libgcc.a(_exit.o)
+                                                  /opt/avr/lib/gcc/avr/4.8.0/../../../../avr/lib/avr4/crtm8.o
+fputc                                             /opt/avr/lib/gcc/avr/4.8.0/../../../../avr/lib/avr4/libc.a(fputc.o)
+                                                  /opt/avr/lib/gcc/avr/4.8.0/../../../../avr/lib/avr4/libc.a(vfprintf_std.o)
+hex2ascii                                         Objects/lcd.o
+high_word                                         Objects/capacitor_chargetank_Retry_2012_1.o
+i                                                 Objects/capacitor_chargetank_Retry_2012_1.o
+lcd_clear                                         Objects/lcd.o
+lcd_init                                          Objects/lcd.o
+                                                  Objects/capacitor_chargetank_Retry_2012_1.o
+lcd_putchar                                       Objects/lcd.o
+lcd_string                                        Objects/lcd.o
+                                                  Objects/capacitor_chargetank_Retry_2012_1.o
+long2ascii                                        Objects/lcd.o
+main                                              Objects/capacitor_chargetank_Retry_2012_1.o
+                                                  /opt/avr/lib/gcc/avr/4.8.0/../../../../avr/lib/avr4/crtm8.o
+measured                                          Objects/capacitor_chargetank_Retry_2012_1.o
+measured_high                                     Objects/capacitor_chargetank_Retry_2012_1.o
+ms_spin                                           Objects/lcd.o
+sprintf                                           /opt/avr/lib/gcc/avr/4.8.0/../../../../avr/lib/avr4/libc.a(sprintf.o)
+                                                  Objects/capacitor_chargetank_Retry_2012_1.o
+strcpy                                            /opt/avr/lib/gcc/avr/4.8.0/../../../../avr/lib/avr4/libc.a(strcpy.o)
+                                                  Objects/capacitor_chargetank_Retry_2012_1.o
+strnlen                                           /opt/avr/lib/gcc/avr/4.8.0/../../../../avr/lib/avr4/libc.a(strnlen.o)
+                                                  /opt/avr/lib/gcc/avr/4.8.0/../../../../avr/lib/avr4/libc.a(vfprintf_std.o)
+strnlen_P                                         /opt/avr/lib/gcc/avr/4.8.0/../../../../avr/lib/avr4/libc.a(strnlen_P.o)
+                                                  /opt/avr/lib/gcc/avr/4.8.0/../../../../avr/lib/avr4/libc.a(vfprintf_std.o)
+tenths_tab                                        Objects/lcd.o
+test                                              Objects/capacitor_chargetank_Retry_2012_1.o
+vfprintf                                          /opt/avr/lib/gcc/avr/4.8.0/../../../../avr/lib/avr4/libc.a(vfprintf_std.o)
+                                                  /opt/avr/lib/gcc/avr/4.8.0/../../../../avr/lib/avr4/libc.a(sprintf.o)
+waiting                                           Objects/capacitor_chargetank_Retry_2012_1.o
+wtemp                                             Objects/capacitor_chargetank_Retry_2012_1.o

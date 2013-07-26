@@ -1,0 +1,20 @@
+01Aug2010
+   * Added struct SUSBdevice to store vendor and product names, serial
+     inumber  and  version  *  Modified  hiddata.c  to  populate  this
+     structure.
+
+12Jun2010
+   * Fixed REPORT_LEN for Windoze. It has to be larger by  one  on  PC
+     end to allow for dummy report id. On Windoze full REPORT_LEN data
+     bytes are transferred. On Linux the number of bytes sent  can  be
+     samller than  REPORT_LEN,  which  is  more  efficient.  Thus,  on
+     Windoze, data has to framed and the actual length of  valid  data
+     sent along with the frame to figure out, at  the  receiving  end,
+     the number of valid data bytes.
+
+13Jun2009
+	* Added test description to the file header of main.c
+   * Function nWriteUSB( S8Bit *) changed to nWriteUSB(S8Bit *, U8Bit)
+     with length of data  string  to  be  sent  to  muC  passed  as  a
+     parameter. This is to take care of cases where  the  data  string
+     written contains a null character.
