@@ -5,7 +5,7 @@ There are three parts to this
 
 1. latticeAnalyser aka The Lattice Analyser: This analyses the positions and angular velocities of the dipoles and controls the noise current accordingly to simulate temperature.
 
-![Under Progress](latticeAnalyser/screenshot/snapshot12.png "All basic functionalities implemented")
+![Under Progress](latticeAnalyser/screenshots/snapshot12.png "All basic functionalities implemented")
 
 2. temperature aka Temperature: This is the hardware for getting the right currents to flow at the right times, to get the temperature up and running.
 
