@@ -33,12 +33,11 @@
 \contentsline {section}{\numberline {3.5}Lights Camera Action\footnote {This section onwards, its assumed that you have `temperature' programmed and the dipoles setup ready}}{25}{section.3.5}
 \contentsline {subsection}{\numberline {3.5.1}temperature Blind Test}{25}{subsection.3.5.1}
 \contentsline {subsection}{\numberline {3.5.2}Actual Experiment}{25}{subsection.3.5.2}
-\contentsline {section}{\numberline {3.6}Features and Settings}{26}{section.3.6}
-\contentsline {section}{\numberline {3.7}Missing Features}{26}{section.3.7}
-\contentsline {part}{ii\hspace {1em}\spacedlowsmallcaps {Appendix}}{27}{part.2}
-\contentsline {chapter}{\numberline {A}\spacedlowsmallcaps {Listings}}{29}{appendix.A}
-\contentsline {section}{\numberline {A.1}Time Line}{29}{section.A.1}
-\contentsline {section}{\numberline {A.2}Git Commits}{33}{section.A.2}
-\contentsline {chapter}{\numberline {B}\spacedlowsmallcaps {Source Codes}}{55}{appendix.B}
-\contentsline {section}{\numberline {B.1}Lattice Analyser}{55}{section.B.1}
-\contentsline {section}{\numberline {B.2}temperature}{104}{section.B.2}
+\contentsline {section}{\numberline {3.6}Missing Features}{27}{section.3.6}
+\contentsline {part}{ii\hspace {1em}\spacedlowsmallcaps {Appendix}}{29}{part.2}
+\contentsline {chapter}{\numberline {A}\spacedlowsmallcaps {Listings}}{31}{appendix.A}
+\contentsline {section}{\numberline {A.1}Time Line}{31}{section.A.1}
+\contentsline {section}{\numberline {A.2}Git Commits}{35}{section.A.2}
+\contentsline {chapter}{\numberline {B}\spacedlowsmallcaps {Source Codes}}{57}{appendix.B}
+\contentsline {section}{\numberline {B.1}Lattice Analyser}{57}{section.B.1}
+\contentsline {section}{\numberline {B.2}temperature}{106}{section.B.2}

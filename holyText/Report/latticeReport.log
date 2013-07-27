@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.1415926-2.4-1.40.13 (MiKTeX 2.9 64-bit) (preloaded format=pdflatex 2013.5.19)  27 JUL 2013 21:48
+This is pdfTeX, Version 3.1415926-2.4-1.40.13 (MiKTeX 2.9 64-bit) (preloaded format=pdflatex 2013.5.19)  27 JUL 2013 22:55
 entering extended mode
 **C:/Users/Atul/Documents/gitHub/toAtulArora/dipoles/holyText/Report/latticeRep
 ort.tex
@@ -789,7 +789,7 @@ File: mt-ppl.cfg 2005/11/16 v1.6 microtype config. file: Palatino (RS)
 )
 ABD: EveryShipout initializing macros
 (C:\Users\Atul\Documents\gitHub\toAtulArora\dipoles\holyText\Report\FrontBackma
-tter/Titlepage.tex <gfx/snapshot3.png, id=163, 272.01625pt x 106.3975pt>
+tter/Titlepage.tex <gfx/snapshot3.png, id=159, 272.01625pt x 106.3975pt>
 File: gfx/snapshot3.png Graphic file (type png)
 
 <use gfx/snapshot3.png>
@@ -918,27 +918,27 @@ Overfull \hbox (7.1495pt too wide) in paragraph at lines 10--11
 
 
 
-] <gfx/fanSetup.jpg, id=296, 177.5433pt x 105.7551pt>
+] <gfx/fanSetup.jpg, id=291, 177.5433pt x 105.7551pt>
 File: gfx/fanSetup.jpg Graphic file (type jpg)
  <use gfx/fanSetup.jpg>
 Package pdftex.def Info: gfx/fanSetup.jpg used on input line 47.
 (pdftex.def)             Requested size: 235.19897pt x 140.10707pt.
 
-<gfx/fanSetupActual.jpg, id=297, 2585.66pt x 1943.26pt>
+<gfx/fanSetupActual.jpg, id=292, 2585.66pt x 1943.26pt>
 File: gfx/fanSetupActual.jpg Graphic file (type jpg)
 
 <use gfx/fanSetupActual.jpg>
 Package pdftex.def Info: gfx/fanSetupActual.jpg used on input line 55.
 (pdftex.def)             Requested size: 235.19897pt x 176.7539pt.
 
-<gfx/vacuumCleanerSetup.jpg, id=299, 2585.66pt x 1943.26pt>
+<gfx/vacuumCleanerSetup.jpg, id=294, 2585.66pt x 1943.26pt>
 File: gfx/vacuumCleanerSetup.jpg Graphic file (type jpg)
 
 <use gfx/vacuumCleanerSetup.jpg>
 Package pdftex.def Info: gfx/vacuumCleanerSetup.jpg used on input line 63.
 (pdftex.def)             Requested size: 235.19897pt x 176.7539pt.
 
-<gfx/theLightDipole.jpg, id=301, 233.9139pt x 281.6121pt>
+<gfx/theLightDipole.jpg, id=296, 233.9139pt x 281.6121pt>
 File: gfx/theLightDipole.jpg Graphic file (type jpg)
 
 <use gfx/theLightDipole.jpg>
@@ -953,7 +953,7 @@ n well enough
  []
 
 [8 <C:/Users/Atul/Documents/gitHub/toAtulArora/dipoles/holyText/Report/gfx/vacu
-umCleanerSetup.jpg>] <gfx/picture002.jpg, id=319, 336.25626pt x 336.25626pt>
+umCleanerSetup.jpg>] <gfx/picture002.jpg, id=314, 336.25626pt x 336.25626pt>
 File: gfx/picture002.jpg Graphic file (type jpg)
 
 <use gfx/picture002.jpg>
@@ -961,7 +961,7 @@ Package pdftex.def Info: gfx/picture002.jpg used on input line 99.
 (pdftex.def)             Requested size: 235.19897pt x 235.1982pt.
  [9 <C:/Users/Atul/Documents/gitHub/toAtulArora/dipoles/holyText/Report/gfx/the
 LightDipole.jpg>]
-<../../latticeAnalyser/screenshots/snapshot1.png, id=326, 963.6pt x 770.88pt>
+<../../latticeAnalyser/screenshots/snapshot1.png, id=321, 963.6pt x 770.88pt>
 File: ../../latticeAnalyser/screenshots/snapshot1.png Graphic file (type png)
 
 <use ../../latticeAnalyser/screenshots/snapshot1.png>
@@ -973,7 +973,7 @@ Overfull \hbox (33.60205pt too wide) in paragraph at lines 123--124
  [] 
  []
 
-<../../latticeAnalyser/screenshots/snapshot2.png, id=327, 963.6pt x 770.88pt>
+<../../latticeAnalyser/screenshots/snapshot2.png, id=322, 963.6pt x 770.88pt>
 File: ../../latticeAnalyser/screenshots/snapshot2.png Graphic file (type png)
 
 <use ../../latticeAnalyser/screenshots/snapshot2.png>
@@ -986,7 +986,7 @@ Overfull \hbox (33.60205pt too wide) in paragraph at lines 131--132
  []
 
 
-<../../latticeAnalyser/multimediaFiles/singleDipole.png, id=330, 97.5645pt x 97
+<../../latticeAnalyser/multimediaFiles/singleDipole.png, id=325, 97.5645pt x 97
 .5645pt>
 File: ../../latticeAnalyser/multimediaFiles/singleDipole.png Graphic file (type
  png)
@@ -995,7 +995,7 @@ Package pdftex.def Info: ../../latticeAnalyser/multimediaFiles/singleDipole.png
  used on input line 142.
 (pdftex.def)             Requested size: 100.80103pt x 100.80219pt.
 
-<../../latticeAnalyser/screenshots/snapshot5.png, id=331, 963.6pt x 770.88pt>
+<../../latticeAnalyser/screenshots/snapshot5.png, id=326, 963.6pt x 770.88pt>
 File: ../../latticeAnalyser/screenshots/snapshot5.png Graphic file (type png)
 
 <use ../../latticeAnalyser/screenshots/snapshot5.png>
@@ -1007,7 +1007,7 @@ Overfull \hbox (33.60205pt too wide) in paragraph at lines 150--151
  [] 
  []
 
-<gfx/testGraphs.pdf, id=334, 845.07718pt x 597.55246pt>
+<gfx/testGraphs.pdf, id=329, 845.07718pt x 597.55246pt>
 File: gfx/testGraphs.pdf Graphic file (type pdf)
 
 <use gfx/testGraphs.pdf>
@@ -1026,7 +1026,7 @@ on can be missed
 
 [10 <C:/Users/Atul/Documents/gitHub/toAtulArora/dipoles/holyText/Report/gfx/pic
 ture002.jpg>]
-<gfx/ellipseCircleDipoles4x4_black.jpg, id=341, 458.9145pt x 428.802pt>
+<gfx/ellipseCircleDipoles4x4_black.jpg, id=336, 458.9145pt x 428.802pt>
 File: gfx/ellipseCircleDipoles4x4_black.jpg Graphic file (type jpg)
 
 <use gfx/ellipseCircleDipoles4x4_black.jpg>
@@ -1053,7 +1053,7 @@ which
  []
 
 [16]
-<../../latticeAnalyser/screenshots/snapshot8.png, id=403, 1445.4pt x 813.0375pt
+<../../latticeAnalyser/screenshots/snapshot8.png, id=398, 1445.4pt x 813.0375pt
 >
 File: ../../latticeAnalyser/screenshots/snapshot8.png Graphic file (type png)
  <use ../../latticeAnalyser/screenshots/snapshot8.png>
@@ -1066,7 +1066,7 @@ Overfull \hbox (33.60205pt too wide) in paragraph at lines 251--252
  []
 
 
-<../../latticeAnalyser/screenshots/snapshot9.png, id=404, 1445.4pt x 813.0375pt
+<../../latticeAnalyser/screenshots/snapshot9.png, id=399, 1445.4pt x 813.0375pt
 >
 File: ../../latticeAnalyser/screenshots/snapshot9.png Graphic file (type png)
  <use ../../latticeAnalyser/screenshots/snapshot9.png>
@@ -1079,7 +1079,7 @@ Overfull \hbox (33.60205pt too wide) in paragraph at lines 259--260
  []
 
 
-<../../latticeAnalyser/screenshots/snapshot11.png, id=405, 1445.4pt x 813.0375p
+<../../latticeAnalyser/screenshots/snapshot11.png, id=400, 1445.4pt x 813.0375p
 t>
 File: ../../latticeAnalyser/screenshots/snapshot11.png Graphic file (type png)
  <use ../../latticeAnalyser/screenshots/snapshot11.png>
@@ -1100,7 +1100,7 @@ t-tice points,
 [18 <C:/Users/Atul/Documents/gitHub/toAtulArora/dipoles/latticeAnalyser/screens
 hots/snapshot8.png>] [19 <C:/Users/Atul/Documents/gitHub/toAtulArora/dipoles/la
 tticeAnalyser/screenshots/snapshot9.png>]
-<gfx/temperature.jpg, id=428, 2585.66pt x 1943.26pt>
+<gfx/temperature.jpg, id=423, 2585.66pt x 1943.26pt>
 File: gfx/temperature.jpg Graphic file (type jpg)
  <use gfx/temperature.jpg>
 Package pdftex.def Info: gfx/temperature.jpg used on input line 303.
@@ -1137,25 +1137,26 @@ LaTeX Font Info:    Font shape `T1/fvm/m/n' will be
 Package hyperref Warning: Token not allowed in a PDF string (PDFDocEncoding):
 (hyperref)                removing `\@ifnextchar' on input line 154.
 
-[25]) [26] [27
+[25] [26]) [27] [28
 
 
 
-
-
-] [28]
-(C:\Users\Atul\Documents\gitHub\toAtulArora\dipoles\holyText\Report\Chapters/Li
-stings.tex
-Appendix A.
-(C:\Users\Atul\Documents\gitHub\toAtulArora\dipoles\README.md [29
-
+] [29
 
 
 ] [30]
-[31] [32]) [33] [34] [35] [36] [37] [38] [39] [40] [41] [42] [43] [44] [45]
-[46] [47] [48] [49] [50] [51] [52]) [53]
+(C:\Users\Atul\Documents\gitHub\toAtulArora\dipoles\holyText\Report\Chapters/Li
+stings.tex
+Appendix A.
+(C:\Users\Atul\Documents\gitHub\toAtulArora\dipoles\README.md [31
+
+
+
+] [32]
+[33] [34]) [35] [36] [37] [38] [39] [40] [41] [42] [43] [44] [45] [46] [47]
+[48] [49] [50] [51] [52] [53] [54]) [55]
 (C:\Users\Atul\Documents\gitHub\toAtulArora\dipoles\holyText\Report\Chapters/So
-urceCodes.tex [54
+urceCodes.tex [56
 
 
 
@@ -1172,12 +1173,12 @@ File: lstlang1.sty 2004/09/05 1.3 listings language file
 File: lstmisc.sty 2007/02/22 1.4 (Carsten Heinz)
 )
 (C:\Users\Atul\Documents\gitHub\toAtulArora\dipoles\latticeAnalyser\latticeAnal
-yser.cpp [55] [56] [57] [58] [59] [60] [61] [62] [63] [64] [65] [66] [67]
-[68] [69] [70] [71] [72] [73] [74] [75] [76] [77] [78] [79] [80] [81] [82]
-[83] [84] [85] [86] [87] [88] [89] [90] [91] [92] [93] [94] [95] [96] [97]
-[98] [99] [100] [101] [102] [103])
+yser.cpp [57] [58] [59] [60] [61] [62] [63] [64] [65] [66] [67] [68] [69]
+[70] [71] [72] [73] [74] [75] [76] [77] [78] [79] [80] [81] [82] [83] [84]
+[85] [86] [87] [88] [89] [90] [91] [92] [93] [94] [95] [96] [97] [98] [99]
+[100] [101] [102] [103] [104] [105])
 (C:\Users\Atul\Documents\gitHub\toAtulArora\dipoles\temperature\firmware\temper
-ature.c [104]
+ature.c [106]
 Overfull \hbox (77.10667pt too wide) in paragraph at lines 39--40
 [][][][][][] 
  []
@@ -1237,7 +1238,7 @@ Overfull \hbox (10.40527pt too wide) in paragraph at lines 41--43
 [][]  
  []
 
-[105]
+[107]
 Overfull \hbox (41.4061pt too wide) in paragraph at lines 96--97
 [][][][][][] 
  []
@@ -1357,7 +1358,7 @@ Overfull \hbox (51.20593pt too wide) in paragraph at lines 96--97
 [][]  
  []
 
-[106] [107]
+[108] [109]
 Overfull \hbox (204.60873pt too wide) in paragraph at lines 143--144
 [][][][][][] 
  []
@@ -1422,14 +1423,14 @@ Overfull \hbox (214.40857pt too wide) in paragraph at lines 143--144
 [][]  
  []
 
-[108] [109])) [110]
+[110] [111])) [112]
 (C:\Users\Atul\Documents\gitHub\toAtulArora\dipoles\holyText\Report\FrontBackma
 tter/Colophon.tex
 Underfull \hbox (badness 10000) in paragraph at lines 10--14
 
  []
 
-) [111
+) [113
 
 
 
@@ -1624,15 +1625,15 @@ FrontBackmatter/Colophon.tex
 
 Package atveryend Info: Executing hook `AtEndAfterFileList' on input line 100.
 Package rerunfilecheck Info: File `latticeReport.out' has not changed.
-(rerunfilecheck)             Checksum: 268EF132B28C6666B7496F60E079063D;2840.
+(rerunfilecheck)             Checksum: A9BD04394ECA9CBB1074EFD5D5A225C2;2767.
 Package atveryend Info: Empty hook `AtVeryVeryEnd' on input line 100.
  ) 
 Here is how much of TeX's memory you used:
- 22787 strings out of 493921
- 351923 string characters out of 3147285
- 735930 words of memory out of 3000000
- 21903 multiletter control sequences out of 15000+200000
- 94111 words of font info for 123 fonts, out of 3000000 for 9000
+ 22814 strings out of 493921
+ 352128 string characters out of 3147285
+ 735936 words of memory out of 3000000
+ 21905 multiletter control sequences out of 15000+200000
+ 95620 words of font info for 128 fonts, out of 3000000 for 9000
  841 hyphenation exceptions out of 8191
  58i,16n,67p,1570b,3057s stack positions out of 5000i,500n,10000p,200000b,50000s
 {C:/Program Files/MiKTeX 2.9/fonts/enc/dvips/fontname/8r.enc}<C:/Program File
@@ -1640,14 +1641,15 @@ s/MiKTeX 2.9/fonts/type1/public/amsfonts/cm/cmsy10.pfb><C:/Program Files/MiKTeX
  2.9/fonts/type1/public/amsfonts/euler/eufm10.pfb><C:/Program Files/MiKTeX 2.9/
 fonts/type1/public/amsfonts/euler/eurb10.pfb><C:/Program Files/MiKTeX 2.9/fonts
 /type1/public/amsfonts/euler/eurm10.pfb><C:/Program Files/MiKTeX 2.9/fonts/type
-1/public/fpl/fplrc8a.pfb><C:/Program Files/MiKTeX 2.9/fonts/type1/public/fpl/fp
-lrij8a.pfb><C:/Program Files/MiKTeX 2.9/fonts/type1/bera/fvmr8a.pfb><C:/Program
- Files/MiKTeX 2.9/fonts/type1/public/amsfonts/latxfont/lcircle1.pfb><C:/Program
- Files/MiKTeX 2.9/fonts/type1/urw/palatino/uplr8a.pfb><C:/Program Files/MiKTeX 
-2.9/fonts/type1/urw/palatino/uplri8a.pfb>
-Output written on latticeReport.pdf (117 pages, 11896069 bytes).
+1/public/amsfonts/euler/eurm7.pfb><C:/Program Files/MiKTeX 2.9/fonts/type1/publ
+ic/fpl/fplrc8a.pfb><C:/Program Files/MiKTeX 2.9/fonts/type1/public/fpl/fplrij8a
+.pfb><C:/Program Files/MiKTeX 2.9/fonts/type1/bera/fvmr8a.pfb><C:/Program Files
+/MiKTeX 2.9/fonts/type1/public/amsfonts/latxfont/lcircle1.pfb><C:/Program Files
+/MiKTeX 2.9/fonts/type1/urw/palatino/uplr8a.pfb><C:/Program Files/MiKTeX 2.9/fo
+nts/type1/urw/palatino/uplri8a.pfb>
+Output written on latticeReport.pdf (119 pages, 11904665 bytes).
 PDF statistics:
- 5122 PDF objects out of 5155 (max. 8388607)
- 3734 named destinations out of 4296 (max. 500000)
- 26001 words of extra memory for PDF output out of 29859 (max. 10000000)
+ 5152 PDF objects out of 5155 (max. 8388607)
+ 3754 named destinations out of 4296 (max. 500000)
+ 25993 words of extra memory for PDF output out of 29859 (max. 10000000)
 

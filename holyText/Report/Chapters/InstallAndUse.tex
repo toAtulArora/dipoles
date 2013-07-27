@@ -168,9 +168,37 @@ temp 0
 		\begin{lstlisting}
 0
 		\end{lstlisting}
-		A bunch of windows will open up. 
-\section{Features and Settings}
-
+		The number signifies which camera to use. So if you have only one, zero is the way to go. Else you can experiment. A bunch of windows will open up. Let me list them out
+		\begin{enumerate}
+			\item Source: This will show the raw footage from the camera, but the ROI (region of interest, the entire frame by default) will be `undistorted' using prior calibration data.
+			\begin{enumerate}
+				\item Selecting ROI: You can drag using the left mouse button to do so.
+				\item Select Colour for the colour filter: Press `C' (case sensitive) and click on the desired colour in the window.
+			\end{enumerate}
+			\item Filter: This will show you the grayscale image after applying a colour filter.
+			\item Contours: This will display the contours detected and show the ellipses fit, along with the dipoles detected and their corresponding information.
+			\item Settings: This has various sliders to fine tune dipole detection. Here are the sliders and what they control (omitted when its obvious)
+				\begin{enumerate}
+					\item Min Ang Vel Sq: If the time average of energy is below this value, energy is pumped in using temperature
+					\item Hue Tolerance
+					\item Saturation Tolerance
+					\item Value Tolerance
+					\item Minor Axis: Size of the minor axis
+					\item Major Axis
+					\item Radius: Of the only circle in a dipole pattern
+					\item Ellipse Tolerance: Tolerance for all three dimensions specified earlier
+					\item Brightness Inverse: Smaller this number, brighter will be the result in colour filter. Useful for better ellipse fitting.
+				\end{enumerate}
+			\item Debug: Ignore it for now.
+			\item A massive graph like window
+		\end{enumerate}
+		Set these to get all the dipoles visible in the ROI to be detected. When done, press `p' (case sensitive) to start using the current frame as seed. TODO: explain a seed frame. You should now see the graph getting populated. Ensure that the dipole ids (written in square brackets) correspond to their physical positions. If they don't, press `i' (case sensitive) and locate the terminal. Type the dipole id corresponding to the $0^{th}$ place, then the $1^{st}$ place and so on, for example
+		\begin{lstlisting}
+3 1 2 0
+		\end{lstlisting}
+		and press enter. The changes should be visible immediately. Now enter the coil angle of the dipoles (preferably keep them either perpendicular or parallel to the x or y axis as seen through the camera) by pressing `o' and type the value in the terminal (in degrees). If after increasing energy, there's no movement, press `I'. To record all the data since the selection of the seedframe into a file, press `F'. The file is named ``latticeAnalyserRENAMEorLOSEme'' in the same folder as the program. To exit, get to the terminal and press ctrl C. You can press q but that will just bring you back to the terminal. And that's that.
+		\par
+		NOTE: For the single letter commands, ensure one of the graphical windows (except the graph) is selected, else the interrupt won't trigger.
 \section{Missing Features}
 	Following is by no means an exhaustive list of missing features
 	\begin{enumerate}
