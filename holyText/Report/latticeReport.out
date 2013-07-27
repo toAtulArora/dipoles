@@ -1,21 +1,26 @@
 \BOOKMARK [1][-]{acknowledgments.1}{Acknowledgments}{}% 1
 \BOOKMARK [1][-]{tableofcontents.1}{Contents}{}% 2
 \BOOKMARK [1][-]{lof.1}{List of Figures}{}% 3
-\BOOKMARK [1][-]{lot.1}{List of Tables}{}% 4
-\BOOKMARK [1][-]{lol.1}{Listings}{}% 5
-\BOOKMARK [1][-]{acronyms.1}{Acronyms}{}% 6
-\BOOKMARK [0][]{chapter.1}{1 Prologue}{}% 7
-\BOOKMARK [1][-]{section.1.1}{1.1 Prior Art}{chapter.1}% 8
-\BOOKMARK [1][-]{section.1.2}{1.2 Experimental Setup}{chapter.1}% 9
-\BOOKMARK [2][-]{subsection.1.2.1}{1.2.1 The Dipole}{section.1.2}% 10
-\BOOKMARK [2][-]{subsection.1.2.2}{1.2.2 Lattice Analyser}{section.1.2}% 11
-\BOOKMARK [2][-]{subsection.1.2.3}{1.2.3 Temperature}{section.1.2}% 12
-\BOOKMARK [0][]{chapter.2}{2 Watch It Grow}{}% 13
-\BOOKMARK [1][-]{section.2.1}{2.1 Sentimental IntroductionThis section can be skipped, without any loss of continuity.}{chapter.2}% 14
-\BOOKMARK [1][-]{section.2.2}{2.2 The Journey}{chapter.2}% 15
-\BOOKMARK [2][-]{subsection.2.2.1}{2.2.1 Look it has begun}{section.2.2}% 16
-\BOOKMARK [2][-]{subsection.2.2.2}{2.2.2 Time Line}{section.2.2}% 17
-\BOOKMARK [2][-]{subsection.2.2.3}{2.2.3 Construction of the Dipole}{section.2.2}% 18
-\BOOKMARK [2][-]{subsection.2.2.4}{2.2.4 Construction of the Lattice Analyser}{section.2.2}% 19
-\BOOKMARK [2][-]{subsection.2.2.5}{2.2.5 temperature; the rise}{section.2.2}% 20
-\BOOKMARK [0][]{colophon.0}{Colophon}{}% 21
+\BOOKMARK [-1][]{part.1}{Chapters}{}% 4
+\BOOKMARK [0][]{chapter.1}{1 Prologue}{part.1}% 5
+\BOOKMARK [1][-]{section.1.1}{1.1 Prior Art}{chapter.1}% 6
+\BOOKMARK [1][-]{section.1.2}{1.2 Experimental Setup}{chapter.1}% 7
+\BOOKMARK [2][-]{subsection.1.2.1}{1.2.1 The Dipole}{section.1.2}% 8
+\BOOKMARK [2][-]{subsection.1.2.2}{1.2.2 Lattice Analyser}{section.1.2}% 9
+\BOOKMARK [2][-]{subsection.1.2.3}{1.2.3 Temperature}{section.1.2}% 10
+\BOOKMARK [0][]{chapter.2}{2 Watch It Grow}{part.1}% 11
+\BOOKMARK [1][-]{section.2.1}{2.1 Sentimental IntroductionThis section can be skipped, without any loss of continuity.}{chapter.2}% 12
+\BOOKMARK [1][-]{section.2.2}{2.2 The Journey}{chapter.2}% 13
+\BOOKMARK [2][-]{subsection.2.2.1}{2.2.1 Look it has begun}{section.2.2}% 14
+\BOOKMARK [2][-]{subsection.2.2.2}{2.2.2 Time Line}{section.2.2}% 15
+\BOOKMARK [2][-]{subsection.2.2.3}{2.2.3 Construction of the Dipole}{section.2.2}% 16
+\BOOKMARK [2][-]{subsection.2.2.4}{2.2.4 Construction of the Lattice Analyser}{section.2.2}% 17
+\BOOKMARK [2][-]{subsection.2.2.5}{2.2.5 temperature; the rise}{section.2.2}% 18
+\BOOKMARK [-1][]{part.2}{Appendix}{}% 19
+\BOOKMARK [0][]{appendix.A}{A Listings}{part.2}% 20
+\BOOKMARK [1][-]{section.A.1}{A.1 Time Line}{appendix.A}% 21
+\BOOKMARK [1][-]{section.A.2}{A.2 Git Commits}{appendix.A}% 22
+\BOOKMARK [0][]{appendix.B}{B Source Codes}{part.2}% 23
+\BOOKMARK [1][-]{section.B.1}{B.1 Lattice Analyser}{appendix.B}% 24
+\BOOKMARK [1][-]{section.B.2}{B.2 temperature}{appendix.B}% 25
+\BOOKMARK [0][]{colophon.0}{Colophon}{part.2}% 26

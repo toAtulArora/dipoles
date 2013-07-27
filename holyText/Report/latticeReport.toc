@@ -1,22 +1,30 @@
 \select@language {american}
 \vspace {-\cftbeforepartskip }
 \select@language {american}
-\contentsline {chapter}{\numberline {1}\spacedlowsmallcaps {Prologue}}{1}{chapter.1}
-\contentsline {section}{\numberline {1.1}Prior Art}{1}{section.1.1}
-\contentsline {section}{\numberline {1.2}Experimental Setup}{1}{section.1.2}
-\contentsline {subsection}{\numberline {1.2.1}The Dipole}{1}{subsection.1.2.1}
-\contentsline {subsection}{\numberline {1.2.2}Lattice Analyser}{2}{subsection.1.2.2}
-\contentsline {subsection}{\numberline {1.2.3}Temperature}{2}{subsection.1.2.3}
-\contentsline {chapter}{\numberline {2}\spacedlowsmallcaps {Watch It Grow}}{3}{chapter.2}
-\contentsline {section}{\numberline {2.1}Sentimental Introduction\footnote {This section can be skipped, without any loss of continuity.}}{3}{section.2.1}
-\contentsline {section}{\numberline {2.2}The Journey}{3}{section.2.2}
-\contentsline {subsection}{\numberline {2.2.1}Look it has begun}{3}{subsection.2.2.1}
-\contentsline {subsection}{\numberline {2.2.2}Time Line}{4}{subsection.2.2.2}
-\contentsline {subsection}{\numberline {2.2.3}Construction of the Dipole}{8}{subsection.2.2.3}
-\contentsline {subsection}{\numberline {2.2.4}Construction of the Lattice Analyser}{12}{subsection.2.2.4}
-\contentsline {subsubsection}{\numberline {2.2.4.1}Proof of Concept: Recognizing Patterns}{12}{subsubsection.2.2.4.1}
-\contentsline {subsubsection}{\numberline {2.2.4.2}Aftermath and Recognition Tests}{13}{subsubsection.2.2.4.2}
-\contentsline {subsubsection}{\numberline {2.2.4.3}`temperature' compatible}{17}{subsubsection.2.2.4.3}
-\contentsline {subsubsection}{\numberline {2.2.4.4}Adding Realtime Graphing Capability}{19}{subsubsection.2.2.4.4}
-\contentsline {subsubsection}{\numberline {2.2.4.5}The Modding Problem}{21}{subsubsection.2.2.4.5}
-\contentsline {subsection}{\numberline {2.2.5}temperature; the rise}{72}{subsection.2.2.5}
+\contentsline {part}{i\hspace {1em}\spacedlowsmallcaps {Chapters}}{1}{part.1}
+\contentsline {chapter}{\numberline {1}\spacedlowsmallcaps {Prologue}}{3}{chapter.1}
+\contentsline {section}{\numberline {1.1}Prior Art}{3}{section.1.1}
+\contentsline {section}{\numberline {1.2}Experimental Setup}{3}{section.1.2}
+\contentsline {subsection}{\numberline {1.2.1}The Dipole}{3}{subsection.1.2.1}
+\contentsline {subsection}{\numberline {1.2.2}Lattice Analyser}{4}{subsection.1.2.2}
+\contentsline {subsection}{\numberline {1.2.3}Temperature}{4}{subsection.1.2.3}
+\contentsline {chapter}{\numberline {2}\spacedlowsmallcaps {Watch It Grow}}{5}{chapter.2}
+\contentsline {section}{\numberline {2.1}Sentimental Introduction\footnote {This section can be skipped, without any loss of continuity.}}{5}{section.2.1}
+\contentsline {section}{\numberline {2.2}The Journey}{5}{section.2.2}
+\contentsline {subsection}{\numberline {2.2.1}Look it has begun}{5}{subsection.2.2.1}
+\contentsline {subsection}{\numberline {2.2.2}Time Line}{6}{subsection.2.2.2}
+\contentsline {subsection}{\numberline {2.2.3}Construction of the Dipole}{6}{subsection.2.2.3}
+\contentsline {subsection}{\numberline {2.2.4}Construction of the Lattice Analyser}{9}{subsection.2.2.4}
+\contentsline {subsubsection}{\numberline {2.2.4.1}Proof of Concept: Recognizing Patterns}{9}{subsubsection.2.2.4.1}
+\contentsline {subsubsection}{\numberline {2.2.4.2}Aftermath and Recognition Tests}{11}{subsubsection.2.2.4.2}
+\contentsline {subsubsection}{\numberline {2.2.4.3}`temperature' compatible}{15}{subsubsection.2.2.4.3}
+\contentsline {subsubsection}{\numberline {2.2.4.4}Adding Realtime Graphing Capability}{17}{subsubsection.2.2.4.4}
+\contentsline {subsubsection}{\numberline {2.2.4.5}The Modding Problem}{17}{subsubsection.2.2.4.5}
+\contentsline {subsection}{\numberline {2.2.5}temperature; the rise}{19}{subsection.2.2.5}
+\contentsline {part}{ii\hspace {1em}\spacedlowsmallcaps {Appendix}}{21}{part.2}
+\contentsline {chapter}{\numberline {A}\spacedlowsmallcaps {Listings}}{23}{appendix.A}
+\contentsline {section}{\numberline {A.1}Time Line}{23}{section.A.1}
+\contentsline {section}{\numberline {A.2}Git Commits}{27}{section.A.2}
+\contentsline {chapter}{\numberline {B}\spacedlowsmallcaps {Source Codes}}{49}{appendix.B}
+\contentsline {section}{\numberline {B.1}Lattice Analyser}{49}{section.B.1}
+\contentsline {section}{\numberline {B.2}temperature}{98}{section.B.2}
