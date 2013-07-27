@@ -1,0 +1,180 @@
+%************************************************
+\chapter{How to Install and Use}
+%************************************************
+
+\section{What will be covered}
+	Here I'll describe how to install the latticeAnalyser and temperature and run the setup.
+
+\section{What you'll need}
+	Lets itemize straight away:
+	\begin{enumerate}
+		\item A computer running Linux (tested on slackware and ubuntu)
+		\item A compatible webacm
+		\item An AVR programmer (one time programming)
+		\item Tools to fabricate a PCB to design
+		\item At least 4 dipoles
+	\end{enumerate}
+
+\section{Lattice Analyser}
+	\subsection{Prerequisites}
+		You'll first off, need to install a bunch of software packages on your system. Here's a minimalistic list.
+		\begin{enumerate}
+			\item GCC (preferably a version that supports C++ 11)
+			\item cmake
+			\item make
+			\item git (recommended)
+			\item OpenCV
+			\item plplot
+			\item libusb
+		\end{enumerate}
+		Let's start with slackware; most of the build utilities are already available, viz. you wouldn't need to care too much about installing GCC cmake and make. I encourage you to install git. Just download the tar.gz and then
+		\begin{lstlisting}
+cd /path/whereDownloaded
+tar -xvf gitPackageName.tar.gz
+cd gitPackageName
+./configure #(maybe required)
+make
+make install
+		\end{lstlisting}
+		Now for OpenCV, do the following on a terminal
+		\begin{lstlisting}
+cd /path/where/you/have/space
+git clone https://github.com/Itseez/opencv.git
+cd opencv
+mkdir release
+cmake -D CMAKE_BUILD_TYPE=RELEASE -D CMAKE_INSTALL_PREFIX=/usr/local ..
+cd release
+make
+make install
+		\end{lstlisting}
+		This should work. If you get errors, you may lookup the internet or drop me an email. If you wish, you can even install it with IPP and TBB (they help in boosting performace)\\
+		Next is plplot. You simply need to download it and follow the instructions given in the README after extracting with tar -xvf (oh the xvf is extract, verbose (tells you what its doing) and file (you specify it)). This too uses cmake.\\
+		The usb library I don't remember installing so it is I think already available in slackware. Else you may download it.
+		\par
+		Now in Ubunutu, you just need to get `synaptic' from the Software Centre and then download the `dev' versions of all the software packages listed above. Simple.		
+	\subsection{Compiling}
+		Now do the following in a terminal
+		\begin{lstlisting}
+cd /path/where/you/want/to/put/latticeAnalyser
+git clone https://github.com/toAtulArora/dipoles.git
+cd dipoles/latticeAnalyser
+make clean
+make
+		\end{lstlisting}
+		And you're good to go.
+\section{temperature}
+	\subsection{Prerequisites}
+		You'll need a programmer for the AVR and I am assuming you have some experience using it. Also I'm assuming its compatible with avrdude, at least for this set of instructions. So here's the list of packages you'll need.
+		\begin{enumerate}
+			\item bin-utils
+			\item gcc-core
+			\item avr-libc
+			\item avr-dude
+			\item bootloadHID
+		\end{enumerate}
+		For slackware, you'll need to work a little. In ubuntu, you can install all (except the last) using synaptic. To manually install, download all these from the net into one folder say avr-stuff and fire up a terminal. Run the following.
+		\begin{lstlisting}
+cd /where/you/downloaded/avr-stuff
+#extract all files at once
+cat *.tar.gz | tar -xvf - -i
+cat *.tar.bz2 | tar -xzvf - -i
+# the i is for ignoring end of file
+
+#bin-utils
+#---------
+cd bin-utils
+#or equivalent, whatever your extracted folder reads. do an
+#ls
+#for listing the files in a folder
+mkdir avr-binutils; cd &_
+#make a folder for bin-utils and cd to it (in a single command)
+../binutils-versionnumber/configure --target=avr --prefix=/opt/avr
+make
+make install
+export PATH=$PATH:/opt/avr/bin
+#if you haven't already, for checking do 
+#echo $PATH
+
+#To do this automatically everytime, do the following
+#in /etc/profile, add a line
+#PATH=$PATH:/opt/avr/bin
+#can use the following command
+#vi PATH
+#then i, and then use the arrow keys to go to the bottom, when done adding, press escape, and type :wq and press enter for saving (writing to file) and quiting
+
+
+#avr-gcc
+#-------
+#again cd into avr-gcc first then
+mkdir avr-gcc; cd &_
+../gcc-versionnumber/configure --target=avr --prefix=/opt/avr --enable-languages=c --disable-nls --disable-libssp
+make
+make install
+
+#avr-libc
+#--------
+#cd avr-libc-version
+./configure --build=`./config.guess` --host=avr --prefix=/opt/avr
+#note the quotes are not the usual ones; on the us layout, they are on the ones on the left of 1
+		\end{lstlisting}
+		For avr-dude you can download and follow the instructions. Nothing complicated there. For bootloadHID, you may have to build the PC part. Once done, do the following
+		\begin{lstlisting}
+cd /to/where/you/built/it
+ln ./bootloadHID /usr/local/bin/bootloadHID
+#create a link so you can run it as bootloadHID in the terminal
+chmod 777 /usr/local/bin/bootloadHID
+#give it permissions to work
+		\end{lstlisting}
+		Brilliant. Now you're very close. Just burn the firmware given in bootloadHID (assuming you've built `temperature' in accordance with the schematic given earlier) using your favourite programmer.\footnote{CAVEAT: You may need to change the pin you're using to indicate you want to program, in accordance with the hardware and recompile the firmware before burning}
+	\subsection{Compiling and Burning}
+		Building temperature is easy peasy, lemon squeezy. Shot the program pin (as you've chosen it in the bootloadHID firmware) and reset the device. Then just goto the temperature folder and fire
+		\begin{lstlisting}
+make
+		\end{lstlisting}
+		and it should even program the device. If something goes wrong, try
+		\begin{lstlisting}
+dmesg
+		\end{lstlisting}
+		and ensure your bootloadHID shows up by unplugging and replugging. Some pitfalls include
+		\begin{enumerate}
+			\item Not setting the fuse-bits to use the external clock. If you don't know what settings to use, you can use the ones given in \autoref{fusebits}.
+			\item Using an ATmega8L instead of ATmega8 (L is a low voltage variant that is not usually stable above 8 MHz, although in the lab it did work)
+		\end{enumerate}
+		To verify you've programmed `temperature' correctly (well you can't do it wrong; either you program it or you don't) then after removing the program pin jumper (remove the shot) and resetting, when you try dmesg, you should get NPL temperature. Cool.
+		\begin{lstlisting}
+H-Fuses	: 11000001 = C1 
+[Preserve EEPROM, Use custom Clock settings (for external crystal)]
+
+L-Fuses	: 00101111 = 2F 
+[Enable Brown Out Detection at 4.0V, ext. crystal high freq]
+		\end{lstlisting}\label{fusebits}
+		\par
+		It would now be a good time to connect all the dipoles (put them far apart) to temperature using the connectors.
+
+\section{Lights Camera Action\protect\footnote{This section onwards, its assumed that you have `temperature' programmed and the dipoles setup ready}}
+	Yes literally that. Make sure you have enough light falling on the dipoles, they're all in the view of the camera and then fire from the terminal
+	\begin{lstlisting}
+./latticeAnalyser
+	\end{lstlisting}
+	Hopefully, it would run without any issues. If it crashes, well we'll discuss that in a bit. Let's start with testing how well the temperature unit is performing.
+	\subsection{temperature Blind Test}
+		So called because we won't be using the camera at all for this functionality. We'll first fire the electromagnets in the dipoles one by one to ensure everything is functional.
+		\begin{lstlisting}
+temp 0
+		\end{lstlisting}
+		Change the zero sequentially to test the corresponding dipoles. At times, even when everything seems fine but the dipole doesn't move, the wiring of the electromagnet is wrong.
+	\subsection{Actual Experiment}
+		Once the temperature has been confirmed to be functional, setup the dipoles in a lattice configuration and then just type
+		\begin{lstlisting}
+0
+		\end{lstlisting}
+		A bunch of windows will open up. 
+\section{Features and Settings}
+
+\section{Missing Features}
+	Following is by no means an exhaustive list of missing features
+	\begin{enumerate}
+		\item Ability to save settings
+		\item Ability to change the calibration file name
+		\item Very poor file name creation for saving the data
+	\end{enumerate}
