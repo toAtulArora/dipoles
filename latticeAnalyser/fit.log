@@ -1,0 +1,95 @@
+
+
+*******************************************************************************
+Mon Jul 29 16:06:41 2013
+
+
+FIT:    data read from "latticeAnalyserRENAMEorLOSEme" u 1:7
+        format = x:z
+	y range restricted to [158.160 : 168.743]
+        #datapoints = 318
+        residuals are weighted equally (unit weight)
+
+function used for fitting: f(x)
+fitted parameters initialized with current variable values
+
+
+
+ Iteration 0
+ WSSR        : 7.61625e+10       delta(WSSR)/WSSR   : 0
+ delta(WSSR) : 0                 limit for stopping : 1e-05
+ lambda	  : 6.24989e-270
+
+initial set of free parameter values
+
+a               = 40000
+b               = 4
+BREAK:          Undefined value during function evaluation
+
+
+
+*******************************************************************************
+Mon Jul 29 16:07:08 2013
+
+
+FIT:    data read from "latticeAnalyserRENAMEorLOSEme" u 1:7
+        format = x:z
+	y range restricted to [158.000 : 166.000]
+        #datapoints = 240
+        residuals are weighted equally (unit weight)
+
+function used for fitting: f(x)
+fitted parameters initialized with current variable values
+
+BREAK:          Undefined value during function evaluation
+
+
+
+*******************************************************************************
+Mon Jul 29 16:07:34 2013
+
+
+FIT:    data read from "latticeAnalyserRENAMEorLOSEme" u ($1-158):7
+        format = x:z
+	y range restricted to [158.000 : 166.000]
+BREAK:          No data to fit 
+
+
+
+*******************************************************************************
+Mon Jul 29 16:07:51 2013
+
+
+FIT:    data read from "latticeAnalyserRENAMEorLOSEme" u ($1-158):7
+        format = x:z
+	y range restricted to [158.000 : 166.000]
+BREAK:          No data to fit 
+
+
+
+*******************************************************************************
+Mon Jul 29 16:09:40 2013
+
+
+FIT:    data read from "latticeAnalyserRENAMEorLOSEme" u 1:7
+        format = x:z
+	y range restricted to [158.000 : 166.000]
+        #datapoints = 240
+        residuals are weighted equally (unit weight)
+
+function used for fitting: f(x)
+fitted parameters initialized with current variable values
+
+
+
+ Iteration 0
+ WSSR        : 8.30606e+10       delta(WSSR)/WSSR   : 0
+ delta(WSSR) : 0                 limit for stopping : 1e-05
+ lambda	  : 1.40175e-269
+
+initial set of free parameter values
+
+a               = 40000
+b               = 4
+BREAK:          Undefined value during function evaluation
+
