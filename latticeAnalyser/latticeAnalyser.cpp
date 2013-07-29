@@ -452,7 +452,8 @@ int dipole::current=0;
 // array<dipole,500> dipoles;
 // array<dipole,500> lastDipoles;
 #define DmaxDipoleCount 1000
-#define DtemperatureAverageOverPeriod 1
+// #define DtemperatureAverageOverPeriod 1
+int temperatureAverageOverPeriod=1;
 dipole dipoles[2][DmaxDipoleCount];
 // Colour read
 // Point origin;
@@ -883,7 +884,10 @@ int process(VideoCapture& capture)
   //Show the settings window
 
   namedWindow(settings_window,WINDOW_AUTOSIZE  | CV_GUI_NORMAL);
-  createTrackbar( "Min Ang Vel Sq", settings_window, &minAngularVelocity, 1000000, 0 );
+  
+
+  createTrackbar( "Min Ang Vel Sq", settings_window, &minAngularVelocity, 100000, 0 );
+  createTrackbar( "Averaging Time", settings_window, &temperatureAverageOverPeriod, 10, 0 );
   // H: 0 - 180, S: 0 - 255, V: 0 - 255  
   createTrackbar( "Hue Tolerance", settings_window, &hueTol, 180, 0 );
   createTrackbar( "Saturation Tolerance", settings_window, &saturationTol, 255, 0 );
@@ -1385,7 +1389,7 @@ int process(VideoCapture& capture)
         {
           double dTime=(dipoleData[cf].time-dipoleData[k].time);
           // cout<<dTime;
-          if(dTime>=0 && dTime<DtemperatureAverageOverPeriod)
+          if(dTime>=0 && dTime<(double)temperatureAverageOverPeriod)
           {
             temperatureFrame+=dipoleData[k].meanSquaredAngularVelocity;
             // cout<<temperatureFrame;
@@ -1847,9 +1851,10 @@ int process(VideoCapture& capture)
               {
                 fprintf(pFile,"\t Dipole %d",seedDipole.data[fi].id);
               }
+              fprintf(pFile,"\t Mean Sq Ang Vel Per \t Temperature");
               fprintf(pFile,"\n");
 
-              //Now write the data
+              //Now write the data              
               for (vector<dipoleFrame>::iterator dD=dipoleData.begin(); dD!=dipoleData.end();dD++)
               {
                 //The first entry is time
@@ -1862,6 +1867,7 @@ int process(VideoCapture& capture)
                   else
                     fprintf(pFile,"\t");
                 }
+                fprintf(pFile,"\t %f \t %f",dD->meanSquaredAngularVelocity,dD->temperature);
                 fprintf(pFile,"\n");
               }
               fclose (pFile);
