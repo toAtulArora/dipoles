@@ -1410,15 +1410,31 @@ int process(VideoCapture& capture)
             static int lastFireIntensity=0;
             static long lastFireTime=0;
             int bestCandidate=0;    //Gotto pump some dipole! :P
-            float lastMinDist=360;  //This is the how far it is from the coil, can't be greater than 180
+            // float lastMinDist=360;  //This is the how far it is from the coil, can't be greater than 180
+            float lastMaxSin=0;
             for(int i=0;i<dipoleData[cf].data.size();i++)
             {
-              float minDist=candidateAptitude(i);
-              if(minDist<lastMinDist)
+              // float minDist=candidateAptitude(i);
+              float maxSin=abs(sin(candidateAptitude(i) * (3.1415926535/180)));
+              // if(minDist<lastMinDist)
+              if(maxSin>lastMaxSin)
               {                
-                lastMinDist=minDist;
+                // lastMinDist=minDist;
+                lastMaxSin=maxSin;
                 bestCandidate=i;
               }
+            // static int lastFireIntensity=0;
+            // static long lastFireTime=0;
+            // int bestCandidate=0;    //Gotto pump some dipole! :P
+            // float lastMinDist=360;  //This is the how far it is from the coil, can't be greater than 180
+            // for(int i=0;i<dipoleData[cf].data.size();i++)
+            // {
+            //   float minDist=candidateAptitude(i);
+            //   if(minDist<lastMinDist)
+            //   {                
+            //     lastMinDist=minDist;
+            //     bestCandidate=i;
+            //   }
             }
 
             int dipoleToFire=seedDipole.data[ dipoleData[cf].data[bestCandidate].id ].id;
